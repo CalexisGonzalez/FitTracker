@@ -31,10 +31,12 @@ public class MainActivityView implements LogInContract.View{
     @Override
     public void onSignUpPressed() {
         //Cambio a pantalla de registro
+        Toast.makeText(actividad,"Sign up oprimido",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onValidLogin() {
         //Cambio a pantalla principal de la app
+        Toast.makeText(actividad,"Informacion de inicio valida",Toast.LENGTH_SHORT).show();
     }
 }
