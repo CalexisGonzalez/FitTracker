@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FitTracker</string>
+    <string name="pass">Password</string>
+    <string name="email">E-mail</string>
+    <string name="exampleMail">ejemplo@mail.com</string>
+    <string name="login">Log In</string>
+    <string name="signUp">Sign Up</string>
 </resources>
