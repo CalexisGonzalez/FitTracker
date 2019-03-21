@@ -11,7 +11,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mail;
     private EditText password;
     private UserBase lista;
-
+    private final String MAIL_PRUEBA = "danko94.cg@gmail.com";
+    private final String PASS_PRUEBA = "1234";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         mail=findViewById(R.id.mail_usuario);
         password=findViewById(R.id.password);
         lista = new UserBase();
-        lista.addUsuario(new User("danko94.cg@gmail.com","1234"));
+        lista.addUsuario(new User(MAIL_PRUEBA,PASS_PRUEBA));
         init();
     }
     public void init(){
