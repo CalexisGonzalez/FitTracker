@@ -4,15 +4,17 @@ import android.app.Activity;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivityView implements LogInContract.View{
-    private EditText mail;
-    private EditText password;
+import butterknife.BindView;
+
+public class MainActivityView implements LogInContract.View {
+    @BindView(R.id.mail_usuario) EditText mail;
+    @BindView(R.id.password) EditText password;
     private Activity actividad;
-    public MainActivityView(EditText mail, EditText password,Activity actividad){
-        this.mail=mail;
-        this.password=password;
-        this.actividad=actividad;
+
+    public MainActivityView(Activity actividad) {
+        this.actividad = actividad;
     }
+
     @Override
     public String getEmail() {
         return mail.getText().toString();
@@ -25,18 +27,18 @@ public class MainActivityView implements LogInContract.View{
 
     @Override
     public void logInError() {
-        Toast.makeText(actividad,"Informacion de inicio incorrecta",Toast.LENGTH_SHORT).show();
+        Toast.makeText(actividad, R.string.logInError, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSignUpPressed() {
         //Cambio a pantalla de registro
-        Toast.makeText(actividad,"Sign up oprimido",Toast.LENGTH_SHORT).show();
+        Toast.makeText(actividad, R.string.onSignUpPressed, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onValidLogin() {
         //Cambio a pantalla principal de la app
-        Toast.makeText(actividad,"Informacion de inicio valida",Toast.LENGTH_SHORT).show();
+        Toast.makeText(actividad, R.string.onValidLogin, Toast.LENGTH_SHORT).show();
     }
 }

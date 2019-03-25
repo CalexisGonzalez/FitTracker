@@ -1,8 +1,8 @@
 package com.example.fittracker;
 
 import org.junit.Before;
-import org.mockito.Mock;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -16,27 +16,32 @@ public class LogInTest {
     private @Mock UserBase base;
     private @Mock User user;
     private MainActivityModel model;
+    private final String MOCK_USER = "mockUsername";
+    private final String MOCK_PASS = "mockPassword";
+    private final String MOCK_FALSE_USER = "username";
+    private final String MOCK_FALSE_PASS = "password";
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         model = new MainActivityModel(base);
-        List<User>users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         users.add(user);
         when(base.getUsers()).thenReturn(users);
     }
 
     @Test
     public void shouldAuthenticateUser() throws Exception {
-        when(user.getmMail()).thenReturn("mockUsername");
-        when(user.getPassword()).thenReturn("mockPassword");
-        assertTrue(model.isValidLogIn("mockUsername", "mockPassword"));
+        when(user.getmMail()).thenReturn(MOCK_USER);
+        when(user.getPassword()).thenReturn(MOCK_PASS);
+        assertTrue(model.isValidLogIn(MOCK_USER, MOCK_PASS));
     }
+
     @Test
     public void shouldNotAuthenticateUser() throws Exception {
-        when(user.getmMail()).thenReturn("mockUsername");
-        when(user.getPassword()).thenReturn("mockPassword");
-        assertFalse(model.isValidLogIn("username", "password"));
+        when(user.getmMail()).thenReturn(MOCK_USER);
+        when(user.getPassword()).thenReturn(MOCK_PASS);
+        assertFalse(model.isValidLogIn(MOCK_FALSE_USER, MOCK_FALSE_PASS));
     }
 
 }

@@ -2,8 +2,6 @@ package com.example.fittracker;
 
 public interface LogInContract {
     interface Presenter{
-        void onValidLogin();
-        void onInvalidLogin();
         void onSignUpPressed();
         void onLogInPressed();
     }

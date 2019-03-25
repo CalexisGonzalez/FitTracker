@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mail_margin_horizontal">8dp</dimen>
+    <dimen name="pass_margin_horizontal">8dp</dimen>
+    <dimen name="mail_bottom">13dp</dimen>
+    <dimen name="pass_bottom">18dp</dimen>
+    <dimen name="et_mail_margin_horizontal">16dp</dimen>
+    <dimen name="et_pass_margin_horizontal">16dp</dimen>
+    <dimen name="et_mail_bottom">39dp</dimen>
+    <dimen name="et_pass_bottom">216dp</dimen>
+    <dimen name="button_margin_horizontal">161dp</dimen>
+    <dimen name="login_bottom">14dp</dimen>
+    <dimen name="signup_bottom">62dp</dimen>
+</resources>

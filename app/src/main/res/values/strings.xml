@@ -5,4 +5,7 @@
     <string name="exampleMail">ejemplo@mail.com</string>
     <string name="login">Log In</string>
     <string name="signUp">Sign Up</string>
+    <string name="logInError">Informacion de inicio incorrecta</string>
+    <string name="onSignUpPressed">Sign up oprimido</string>
+    <string name="onValidLogin">Informacion de inicio valida</string>
 </resources>
