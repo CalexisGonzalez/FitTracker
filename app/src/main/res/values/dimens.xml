@@ -8,6 +8,7 @@
     <dimen name="et_pass_margin_horizontal">16dp</dimen>
     <dimen name="et_mail_bottom">39dp</dimen>
     <dimen name="et_pass_bottom">216dp</dimen>
+    <dimen name="et_size">100sp</dimen>
     <dimen name="button_margin_horizontal">161dp</dimen>
     <dimen name="login_bottom">14dp</dimen>
     <dimen name="signup_bottom">62dp</dimen>

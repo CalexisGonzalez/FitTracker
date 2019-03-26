@@ -8,6 +8,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     private LogInContract.Presenter presenter;
+    private final String MAIL_PRUEBA = "danko94.cg@gmail.com";
+    private final String PASS_PRUEBA = "1234";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +21,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void init() {
         LogInContract.View view = new MainActivityView(this);
-        LogInContract.Model model = new MainActivityModel();
+        UserBase list = new UserBase();
+        list.addUsuario(new User(MAIL_PRUEBA, PASS_PRUEBA));
+        LogInContract.Model model = new MainActivityModel(list);
         presenter = new MainActivityPresenter(view, model);
-        @OnClick(R.id.log_in)
-        public void logIn () {
-            presenter.onLogInPressed();
-        }
-        @OnClick(R.id.sign_up)
-        public void signUp () {
-            presenter.onSignUpPressed();
-        }
+    }
+
+    @OnClick(R.id.log_in)
+    public void logIn() {
+        presenter.onLogInPressed();
+    }
+
+    @OnClick(R.id.sign_up)
+    public void signUp() {
+        presenter.onSignUpPressed();
     }
 }

@@ -1,19 +1,16 @@
 package com.example.fittracker;
 
 public class MainActivityModel implements LogInContract.Model {
-    private final String MAIL_PRUEBA = "danko94.cg@gmail.com";
-    private final String PASS_PRUEBA = "1234";
     private UserBase lista;
 
-    public MainActivityModel() {
-        lista = new UserBase();
-        lista.addUsuario(new User(MAIL_PRUEBA, PASS_PRUEBA));
+    public MainActivityModel(UserBase list) {
+        this.lista = list;
     }
 
     @Override
-    public boolean isValidLogIn(String mail, String password) {
+    public boolean isValidLogIn(User userInput) {
         for (User user : lista.getUsers()) {
-            if (user.getmMail().equals(mail) && (user.getPassword().equals(password))) {
+            if (user.getMail().equals(userInput.getMail()) && (user.getPassword().equals(userInput.getPassword()))) {
                 return true;
             }
         }

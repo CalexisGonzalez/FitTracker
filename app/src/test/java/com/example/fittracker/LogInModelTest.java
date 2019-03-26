@@ -12,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-public class LogInTest {
+public class LogInModelTest {
     private @Mock UserBase base;
     private @Mock User user;
     private MainActivityModel model;
@@ -32,16 +32,16 @@ public class LogInTest {
 
     @Test
     public void shouldAuthenticateUser() throws Exception {
-        when(user.getmMail()).thenReturn(MOCK_USER);
+        when(user.getMail()).thenReturn(MOCK_USER);
         when(user.getPassword()).thenReturn(MOCK_PASS);
-        assertTrue(model.isValidLogIn(MOCK_USER, MOCK_PASS));
+        assertTrue(model.isValidLogIn(new User(MOCK_USER, MOCK_PASS)));
     }
 
     @Test
     public void shouldNotAuthenticateUser() throws Exception {
-        when(user.getmMail()).thenReturn(MOCK_USER);
+        when(user.getMail()).thenReturn(MOCK_USER);
         when(user.getPassword()).thenReturn(MOCK_PASS);
-        assertFalse(model.isValidLogIn(MOCK_FALSE_USER, MOCK_FALSE_PASS));
+        assertFalse(model.isValidLogIn(new User(MOCK_FALSE_USER, MOCK_FALSE_PASS)));
     }
 
 }

@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/etiqueta_mail"
-        android:layout_width="100sp"
+        android:layout_width="@dimen/et_size"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/et_mail_margin_horizontal"
         android:layout_marginLeft="@dimen/et_mail_margin_horizontal"
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/etiqueta_password"
-        android:layout_width="100sp"
+        android:layout_width="@dimen/et_size"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/et_pass_margin_horizontal"
         android:layout_marginLeft="@dimen/et_pass_margin_horizontal"

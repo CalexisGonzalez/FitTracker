@@ -5,13 +5,16 @@ import java.util.List;
 
 public class UserBase {
     private List<User> users;
-    public UserBase(){
+
+    public UserBase() {
         users = new ArrayList<>();
     }
-    public void addUsuario(User usuario){
+
+    public void addUsuario(User usuario) {
         users.add(usuario);
     }
-    public List<User> getUsers(){
+
+    public List<User> getUsers() {
         return users;
     }
 }

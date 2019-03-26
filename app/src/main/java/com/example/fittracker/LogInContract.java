@@ -1,20 +1,25 @@
 package com.example.fittracker;
 
 public interface LogInContract {
-    interface Presenter{
+    interface Presenter {
         void onSignUpPressed();
+
         void onLogInPressed();
     }
 
-    interface Model{
-        boolean isValidLogIn(String mail, String password);
+    interface Model {
+        boolean isValidLogIn(User user);
     }
 
-    interface View{
+    interface View {
         void logInError();
+
         String getEmail();
+
         String getPassword();
+
         void onSignUpPressed();
+
         void onValidLogin();
     }
 }
