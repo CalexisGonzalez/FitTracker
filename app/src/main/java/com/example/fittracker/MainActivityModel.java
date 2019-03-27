@@ -2,9 +2,13 @@ package com.example.fittracker;
 
 public class MainActivityModel implements LogInContract.Model {
     private UserBase lista;
+    private final String MAIL_PRUEBA = "danko94.cg@gmail.com";
+    private final String PASS_PRUEBA = "1234";
 
-    public MainActivityModel(UserBase list) {
-        this.lista = list;
+    public MainActivityModel() {
+
+        this.lista = new UserBase();
+        lista.addUsuario(new User(MAIL_PRUEBA, PASS_PRUEBA));
     }
 
     @Override
