@@ -1,4 +1,6 @@
-package com.example.fittracker;
+package com.example.fittracker.mvp.contracts;
+
+import com.example.fittracker.User;
 
 public interface LogInContract {
     interface Presenter {

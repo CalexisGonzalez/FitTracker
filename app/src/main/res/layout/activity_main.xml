@@ -4,77 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <EditText
-        android:id="@+id/mail_usuario"
+        android:id="@+id/main_activity_text_mail_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/mail_margin_horizontal"
-        android:layout_marginLeft="@dimen/mail_margin_horizontal"
-        android:layout_marginBottom="@dimen/mail_bottom"
+        android:layout_marginStart="@dimen/main_activity_mail_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_mail_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_mail_bottom"
         android:ems="10"
-        android:hint="@string/exampleMail"
+        android:hint="@string/example_mail_hint"
         android:inputType="textEmailAddress"
         android:singleLine="false"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintStart_toEndOf="@+id/etiqueta_mail" />
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_text_password"
+        app:layout_constraintStart_toEndOf="@+id/main_activity_text_etiqueta_mail" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/main_activity_text_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/pass_margin_horizontal"
-        android:layout_marginLeft="@dimen/pass_margin_horizontal"
-        android:layout_marginBottom="@dimen/pass_bottom"
+        android:layout_marginStart="@dimen/main_activity_pass_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_pass_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_pass_bottom"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/log_in"
-        app:layout_constraintStart_toEndOf="@+id/etiqueta_password" />
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_button_log_in"
+        app:layout_constraintStart_toEndOf="@+id/main_activity_text_etiqueta_password" />
 
     <TextView
-        android:id="@+id/etiqueta_mail"
-        android:layout_width="@dimen/et_size"
+        android:id="@+id/main_activity_text_etiqueta_mail"
+        android:layout_width="@dimen/main_activity_et_size"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/et_mail_margin_horizontal"
-        android:layout_marginLeft="@dimen/et_mail_margin_horizontal"
-        android:layout_marginBottom="@dimen/et_mail_bottom"
+        android:layout_marginStart="@dimen/main_activity_et_mail_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_et_mail_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_et_mail_bottom"
         android:ems="10"
-        android:text="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/etiqueta_password"
+        android:text="@string/title_email"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_text_etiqueta_password"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/etiqueta_password"
-        android:layout_width="@dimen/et_size"
+        android:id="@+id/main_activity_text_etiqueta_password"
+        android:layout_width="@dimen/main_activity_et_size"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/et_pass_margin_horizontal"
-        android:layout_marginLeft="@dimen/et_pass_margin_horizontal"
-        android:layout_marginBottom="@dimen/et_pass_bottom"
+        android:layout_marginStart="@dimen/main_activity_et_pass_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_et_pass_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_et_pass_bottom"
         android:ems="10"
-        android:text="@string/pass"
+        android:text="@string/title_pass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/log_in"
+        android:id="@+id/main_activity_button_log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/button_margin_horizontal"
-        android:layout_marginLeft="@dimen/button_margin_horizontal"
-        android:layout_marginBottom="@dimen/login_bottom"
-        android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/sign_up"
+        android:layout_marginStart="@dimen/main_activity_button_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_login_bottom"
+        android:text="@string/btn_login"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_button_sign_up"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/sign_up"
+        android:id="@+id/main_activity_button_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/button_margin_horizontal"
-        android:layout_marginLeft="@dimen/button_margin_horizontal"
-        android:layout_marginBottom="@dimen/signup_bottom"
-        android:text="@string/signUp"
+        android:layout_marginStart="@dimen/main_activity_button_margin_horizontal"
+        android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
+        android:layout_marginBottom="@dimen/main_activity_signup_bottom"
+        android:text="@string/btn_signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
