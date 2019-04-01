@@ -42,7 +42,7 @@ public class SignUpView implements SignUpContract.View {
     }
 
     @Override
-    public void userAlreadyExists(User user) {
+    public void userAlreadyExists() {
         Toast.makeText(activity.get(), R.string.error_user_already_exists, Toast.LENGTH_SHORT).show();
     }
 

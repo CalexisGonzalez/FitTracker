@@ -8,20 +8,25 @@ import android.support.annotation.NonNull;
 public class User {
     @PrimaryKey
     @NonNull
-    private String mMail;
+    private String mail;
     private String password;
     private String name;
     private String surname;
 
     public User(String mail, String password, String name, String surname) {
-        this.mMail = mail;
+        this.mail = mail;
         this.password = password;
         this.name = name;
         this.surname = surname;
     }
 
+    public User(String mail, String password){
+        this.mail = mail;
+        this.password = password;
+    }
+
     public String getMail() {
-        return mMail;
+        return mail;
     }
 
     public String getPassword() {

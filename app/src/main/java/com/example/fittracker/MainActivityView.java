@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fittracker.activities.MainScreenActivity;
 import com.example.fittracker.activities.SignUpActivity;
 import com.example.fittracker.mvp.contracts.LogInContract;
 
@@ -48,6 +49,7 @@ public class MainActivityView implements LogInContract.View {
     @Override
     public void onValidLogin() {
         //Change to valid login screen
-        Toast.makeText(actividad.get(), R.string.msg_on_valid_login, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(actividad.get(), MainScreenActivity.class);
+        actividad.get().startActivity(intent);
     }
 }

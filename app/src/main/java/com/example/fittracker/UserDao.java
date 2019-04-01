@@ -11,15 +11,12 @@ public interface UserDao {
     void insert(User user);
 
     @Query("SELECT * FROM user_table " +
-            "WHERE mMail == :userEmail AND password == :userPassword")
+            "WHERE mail == :userEmail AND password == :userPassword")
     public LiveData<User> fetchUserData(String userEmail, String userPassword);
 
-    @Query("SELECT COUNT(*) from user_table WHERE mMail == :userEmail")
+    @Query("SELECT COUNT(*) from user_table WHERE mail == :userEmail")
     public int fetchUserExist(String userEmail);
 
-    @Query("SELECT COUNT(*) from user_table WHERE mMail == :userEmail AND password == :userPassword")
+    @Query("SELECT COUNT(*) from user_table WHERE mail == :userEmail AND password == :userPassword")
     public int fetchUserLogInValid(String userEmail, String userPassword);
 }
-
-
-// Utilizar POJO para consultas que devuelvan menos columnas.

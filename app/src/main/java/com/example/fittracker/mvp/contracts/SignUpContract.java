@@ -32,7 +32,7 @@ public interface SignUpContract {
 
         void onCancel();
 
-        void userAlreadyExists(User user);
+        void userAlreadyExists();
 
         void succesfulSignUp();
     }

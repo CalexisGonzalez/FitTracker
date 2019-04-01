@@ -1,12 +1,12 @@
 package com.example.fittracker.mvp.presenters;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contracts.SignUpContract;
 
 public class SignUpPresenter implements SignUpContract.Presenter {
     private SignUpContract.Model model;
     private SignUpContract.View view;
-    private final String EMPTY = "";
 
     public SignUpPresenter(SignUpContract.Model model, SignUpContract.View view) {
         this.view = view;
@@ -23,7 +23,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
             User user = new User(view.getEmail(), view.getPassword(),
                     view.getName(), view.getSurname());
             if (model.userDoesExist(user)) {
-                view.userAlreadyExists(user);
+                view.userAlreadyExists();
             } else {
                 model.registrateUser(user);
                 view.succesfulSignUp();
@@ -37,9 +37,9 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     }
 
     private boolean fieldMissing() {
-        return ((view.getEmail().equals(EMPTY)) || (view.getPassword().equals(EMPTY)) ||
-                (view.getRepPassword().equals(EMPTY)) || (view.getName().equals(EMPTY)) ||
-                (view.getSurname().equals(EMPTY)));
+        return ((view.getEmail().equals(ConstantUtils.EMPTY)) || (view.getPassword().equals(ConstantUtils.EMPTY)) ||
+                (view.getRepPassword().equals(ConstantUtils.EMPTY)) || (view.getName().equals(ConstantUtils.EMPTY)) ||
+                (view.getSurname().equals(ConstantUtils.EMPTY)));
     }
 
     private boolean passwordsMatch() {

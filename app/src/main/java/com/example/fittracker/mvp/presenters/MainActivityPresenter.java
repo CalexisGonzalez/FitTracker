@@ -6,7 +6,6 @@ import com.example.fittracker.mvp.contracts.LogInContract;
 public class MainActivityPresenter implements LogInContract.Presenter {
     private LogInContract.View mView;
     private LogInContract.Model mModel;
-    private final String EMPTY = "";
 
     public MainActivityPresenter(LogInContract.View view, LogInContract.Model model) {
         mView = view;
@@ -15,7 +14,7 @@ public class MainActivityPresenter implements LogInContract.Presenter {
 
     @Override
     public void onLogInPressed() {
-        if (mModel.isValidLogIn(new User(mView.getEmail(), mView.getPassword(), EMPTY, EMPTY))) {
+        if (mModel.isValidLogIn(new User(mView.getEmail(), mView.getPassword()))) {
             mView.onValidLogin();
         } else {
             mView.logInError();

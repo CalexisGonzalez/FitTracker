@@ -14,5 +14,7 @@
     <dimen name="main_activity_signup_bottom">62dp</dimen>
     <dimen name="signup_activity_horizontal_margin">50dp</dimen>
     <dimen name="signup_activity_vertical_margin">20dp</dimen>
-
+    <dimen name="signup_activity_layout_vertical_margin">100dp</dimen>
+    <dimen name="mainscreen_settings_horizontal_margin">16dp</dimen>
+    <dimen name="mainscreen_settings_vertical_margin">16dp</dimen>
 </resources>
