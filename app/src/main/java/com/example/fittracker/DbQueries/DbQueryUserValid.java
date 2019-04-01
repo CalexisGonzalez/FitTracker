@@ -8,7 +8,7 @@ import com.example.fittracker.UserDao;
 
 import java.util.concurrent.ExecutionException;
 
-public class DbQueryUserValid extends AsyncTask<User, Void, Boolean> implements DbBooleanQuery {
+public class DbQueryUserValid extends AsyncTask<User, Void, Boolean> implements DbBooleanQuery<Boolean>{
     private UserDao userDao;
 
     public DbQueryUserValid(UserDao userDao) {
@@ -21,11 +21,10 @@ public class DbQueryUserValid extends AsyncTask<User, Void, Boolean> implements 
     }
 
     @Override
-    public boolean executeQuery(User user) {
+    public Boolean executeQuery(User user) {
         try {
-            return this.execute(user).get();
-        } catch (
-                ExecutionException e) {
+            return new DbQueryUserValid(userDao).execute(user).get();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();

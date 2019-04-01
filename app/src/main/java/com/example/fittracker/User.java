@@ -1,6 +1,7 @@
 package com.example.fittracker;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -20,6 +21,7 @@ public class User {
         this.surname = surname;
     }
 
+    @Ignore
     public User(String mail, String password){
         this.mail = mail;
         this.password = password;

@@ -19,4 +19,7 @@ public interface UserDao {
 
     @Query("SELECT COUNT(*) from user_table WHERE mail == :userEmail AND password == :userPassword")
     public int fetchUserLogInValid(String userEmail, String userPassword);
+
+    @Query("DELETE FROM user_table")
+    public void deleteTable();
 }

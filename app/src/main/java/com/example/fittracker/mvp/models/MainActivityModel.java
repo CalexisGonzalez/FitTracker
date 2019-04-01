@@ -6,6 +6,8 @@ import com.example.fittracker.UserDao;
 import com.example.fittracker.UserRoomDatabase;
 import com.example.fittracker.mvp.contracts.LogInContract;
 
+import java.util.concurrent.ExecutionException;
+
 public class MainActivityModel implements LogInContract.Model {
     private UserRoomDatabase db;
     private UserDao userDao;

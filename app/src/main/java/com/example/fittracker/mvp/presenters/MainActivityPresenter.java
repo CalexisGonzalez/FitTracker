@@ -1,5 +1,6 @@
 package com.example.fittracker.mvp.presenters;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contracts.LogInContract;
 

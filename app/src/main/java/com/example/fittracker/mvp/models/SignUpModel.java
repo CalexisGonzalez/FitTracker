@@ -18,7 +18,7 @@ public class SignUpModel implements SignUpContract.Model {
 
     @Override
     public void registrateUser(User user) {
-        new DbInsertUser(userDao).execute(user);
+        new DbInsertUser(userDao).executeQuery(user);
     }
 
     @Override
