@@ -5,4 +5,5 @@ public class ConstantUtils {
     public static final String EMPTY = "";
     public static final int ZERO = 0;
     public static final String DB_USER_TABLE = "user_table";
+    public static final String EMAIL_FORMAT = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
 }

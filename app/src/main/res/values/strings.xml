@@ -13,6 +13,7 @@
     <string name="title_surname">Surname</string>
     <string name="btn_cancel">Cancel</string>
     <string name="error_passwordrep_badmatch">Passwords do not match</string>
+    <string name="error_emailformat">The email must have a valid format</string>
     <string name="error_user_already_exists">That user is already registered</string>
     <string name="error_signup_missing_field">All fields must be filled</string>
     <string name="msg_on_valid_signup">Succesful user registration</string>

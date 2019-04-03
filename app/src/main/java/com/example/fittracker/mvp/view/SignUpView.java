@@ -48,6 +48,7 @@ public class SignUpView implements SignUpContract.View {
     @Override
     public void succesfulSignUp() {
         Toast.makeText(activity.get(), R.string.msg_on_valid_signup, Toast.LENGTH_SHORT).show();
+        activity.get().finish();
     }
 
     @Override
@@ -73,5 +74,10 @@ public class SignUpView implements SignUpContract.View {
     @Override
     public void onCancel() {
         activity.get().finish();
+    }
+
+    @Override
+    public void emailFormatError() {
+        Toast.makeText(activity.get(),R.string.error_emailformat ,Toast.LENGTH_SHORT).show();
     }
 }

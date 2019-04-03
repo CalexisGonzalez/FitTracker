@@ -35,5 +35,7 @@ public interface SignUpContract {
         void userAlreadyExists();
 
         void succesfulSignUp();
+
+        void emailFormatError();
     }
 }

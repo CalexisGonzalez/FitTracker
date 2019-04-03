@@ -4,6 +4,9 @@ import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.SignUpContract;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignUpPresenter implements SignUpContract.Presenter {
     private SignUpContract.Model model;
     private SignUpContract.View view;
@@ -17,6 +20,8 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     public void onSignUpPressed() {
         if (fieldMissing()) {
             view.missingFieldError();
+        } else if (!isEmailValid(view.getEmail())) {
+            view.emailFormatError();
         } else if (!passwordsMatch()) {
             view.passwordRepMatchError();
         } else {
@@ -44,5 +49,12 @@ public class SignUpPresenter implements SignUpContract.Presenter {
 
     private boolean passwordsMatch() {
         return (view.getPassword().equals(view.getRepPassword()));
+    }
+
+    private boolean isEmailValid(String email) {
+        String expression = ConstantUtils.EMAIL_FORMAT;
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

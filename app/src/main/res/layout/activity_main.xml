@@ -7,7 +7,7 @@
     tools:context=".activity.MainActivity">
 
     <EditText
-        android:id="@+id/main_activity_text_mail_usuario"
+        android:id="@+id/main_activity_text_mail_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_activity_mail_margin_horizontal"
