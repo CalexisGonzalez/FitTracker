@@ -52,7 +52,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     }
 
     private boolean isEmailValid(String email) {
-        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        String expression = ConstantUtils.EMAIL_FORMAT;
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
