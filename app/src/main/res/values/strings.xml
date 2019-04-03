@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">FitTracker</string>
-    <string name="pass">Password</string>
-    <string name="email">E-mail</string>
-    <string name="exampleMail">ejemplo@mail.com</string>
-    <string name="login">Log In</string>
-    <string name="signUp">Sign Up</string>
-    <string name="logInError">Informacion de inicio incorrecta</string>
-    <string name="onSignUpPressed">Sign up oprimido</string>
-    <string name="onValidLogin">Informacion de inicio valida</string>
+    <string name="title_pass">Password</string>
+    <string name="title_email">E-mail</string>
+    <string name="example_mail_hint">ejemplo@mail.com</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_signup">Sign Up</string>
+    <string name="error_loginerror">Wrong Log In information</string>
+    <string name="msg_on_signup_pressed">Sign up pressed</string>
+    <string name="msg_on_valid_login">Correct Log In information</string>
+    <string name="title_pass_rep">Repeat Password</string>
+    <string name="title_name">Name</string>
+    <string name="title_surname">Surname</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="error_passwordrep_badmatch">Passwords do not match</string>
+    <string name="error_user_already_exists">That user is already registered</string>
+    <string name="error_signup_missing_field">All fields must be filled</string>
+    <string name="msg_on_valid_signup">Succesful user registration</string>
+    <string name="btn_apply_changes">Apply Changes</string>
 </resources>

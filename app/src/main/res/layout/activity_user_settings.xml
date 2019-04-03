@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/signup_activity_layout_vertical_margin">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/usersettings_activity_et_mail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/title_email" />
+
+        <EditText
+            android:id="@+id/usersettings_activity_edittext_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/usersettings_activity_textview_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/usersettings_activity_et_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_pass" />
+
+        <EditText
+            android:id="@+id/usersettings_activity_edittext_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/usersettings_activity_textview_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/usersettings_activity_et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_name" />
+
+        <EditText
+            android:id="@+id/usersettings_activity_edittext_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/usersettings_activity_textview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/usersettings_activity_et_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_surname" />
+
+        <EditText
+            android:id="@+id/usersettings_activity_edittext_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/usersettings_activity_textview_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+
+        <Button
+            android:id="@+id/usersettings_activity_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_cancel" />
+
+        <Button
+            android:id="@+id/usersettings_activity_button_apply_changes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_apply_changes" />
+    </TableRow>
+</TableLayout>

@@ -1,19 +1,45 @@
 package com.example.fittracker;
 
-public class User {
-    private String mMail;
-    private String password;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-    public User(String mail, String pass) {
-        this.mMail = mail;
-        this.password = pass;
+@Entity(tableName = ConstantUtils.DB_USER_TABLE)
+public class User {
+    @PrimaryKey
+    @NonNull
+    private String mail;
+    private String password;
+    private String name;
+    private String surname;
+
+    public User(String mail, String password, String name, String surname) {
+        this.mail = mail;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    @Ignore
+    public User(String mail, String password){
+        this.mail = mail;
+        this.password = password;
     }
 
     public String getMail() {
-        return mMail;
+        return mail;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 }
