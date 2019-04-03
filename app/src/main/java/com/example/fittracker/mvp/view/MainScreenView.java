@@ -1,10 +1,10 @@
-package com.example.fittracker.mvp.views;
+package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
 import android.content.Intent;
 
-import com.example.fittracker.activities.UserSettingsActivity;
-import com.example.fittracker.mvp.contracts.MainScreenContract;
+import com.example.fittracker.activity.UserSettingsActivity;
+import com.example.fittracker.mvp.contract.MainScreenContract;
 
 import java.lang.ref.WeakReference;
 

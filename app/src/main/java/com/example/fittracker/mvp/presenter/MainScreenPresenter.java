@@ -1,6 +1,6 @@
-package com.example.fittracker.mvp.presenters;
+package com.example.fittracker.mvp.presenter;
 
-import com.example.fittracker.mvp.contracts.MainScreenContract;
+import com.example.fittracker.mvp.contract.MainScreenContract;
 
 public class MainScreenPresenter implements MainScreenContract.Presenter {
     private MainScreenContract.View view;

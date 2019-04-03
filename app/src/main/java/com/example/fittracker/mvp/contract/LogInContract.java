@@ -1,4 +1,4 @@
-package com.example.fittracker.mvp.contracts;
+package com.example.fittracker.mvp.contract;
 
 import com.example.fittracker.User;
 

@@ -1,8 +1,7 @@
-package com.example.fittracker.mvp.presenters;
+package com.example.fittracker.mvp.presenter;
 
-import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
-import com.example.fittracker.mvp.contracts.LogInContract;
+import com.example.fittracker.mvp.contract.LogInContract;
 
 public class MainActivityPresenter implements LogInContract.Presenter {
     private LogInContract.View mView;

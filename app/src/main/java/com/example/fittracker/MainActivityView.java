@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.fittracker.activities.MainScreenActivity;
-import com.example.fittracker.activities.SignUpActivity;
-import com.example.fittracker.mvp.contracts.LogInContract;
+import com.example.fittracker.activity.MainScreenActivity;
+import com.example.fittracker.activity.SignUpActivity;
+import com.example.fittracker.mvp.contract.LogInContract;
 
 import java.lang.ref.WeakReference;
 

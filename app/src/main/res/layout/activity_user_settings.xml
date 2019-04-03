@@ -7,7 +7,7 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="184dp"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
         android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
 
@@ -45,7 +45,7 @@
             android:text="@string/title_pass" />
 
         <EditText
-            android:id="@+id/usersettings_activity_text_password"
+            android:id="@+id/usersettings_activity_edittext_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -65,13 +65,13 @@
         android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
 
         <TextView
-            android:id="@+id/usersettings_activity_et_nombre"
+            android:id="@+id/usersettings_activity_et_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_name" />
 
         <EditText
-            android:id="@+id/usersettings_activity_text_nombre"
+            android:id="@+id/usersettings_activity_edittext_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -79,7 +79,7 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/usersettings_activity_textview_nombre"
+            android:id="@+id/usersettings_activity_textview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible" />
@@ -92,13 +92,13 @@
         android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
 
         <TextView
-            android:id="@+id/usersettings_activity_et_apellido"
+            android:id="@+id/usersettings_activity_et_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_surname" />
 
         <EditText
-            android:id="@+id/usersettings_activity_text_apellido"
+            android:id="@+id/usersettings_activity_edittext_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -106,7 +106,7 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/usersettings_activity_textview_apellido"
+            android:id="@+id/usersettings_activity_textview_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible" />
@@ -120,13 +120,13 @@
 
 
         <Button
-            android:id="@+id/signup_activity_button_cancel"
+            android:id="@+id/usersettings_activity_button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_cancel" />
 
         <Button
-            android:id="@+id/signup_activity_button_signup"
+            android:id="@+id/usersettings_activity_button_apply_changes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_apply_changes" />

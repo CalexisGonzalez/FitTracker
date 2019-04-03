@@ -1,13 +1,13 @@
-package com.example.fittracker.activities;
+package com.example.fittracker.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.fittracker.R;
-import com.example.fittracker.mvp.contracts.MainScreenContract;
-import com.example.fittracker.mvp.models.MainScreenModel;
-import com.example.fittracker.mvp.presenters.MainScreenPresenter;
-import com.example.fittracker.mvp.views.MainScreenView;
+import com.example.fittracker.mvp.contract.MainScreenContract;
+import com.example.fittracker.mvp.model.MainScreenModel;
+import com.example.fittracker.mvp.presenter.MainScreenPresenter;
+import com.example.fittracker.mvp.view.MainScreenView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,9 +23,7 @@ public class MainScreenActivity extends AppCompatActivity {
         init();
     }
     public void init(){
-        MainScreenContract.View view = new MainScreenView(this);
-        MainScreenContract.Model model = new MainScreenModel();
-        presenter = new MainScreenPresenter(view,model);
+        presenter = new MainScreenPresenter(new MainScreenView(this),new MainScreenModel());
     }
     @OnClick(R.id.mainscreen_activity_button_settings)
     public void onSettingsPressed(){ presenter.onSettingsPressed();}

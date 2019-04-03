@@ -1,4 +1,4 @@
-package com.example.fittracker.DbQueries;
+package com.example.fittracker.DbQuery;
 
 import android.os.AsyncTask;
 
@@ -8,22 +8,22 @@ import com.example.fittracker.UserDao;
 
 import java.util.concurrent.ExecutionException;
 
-public class DbQueryUserExist extends AsyncTask<User, Void, Boolean> implements DbBooleanQuery<Boolean> {
-    private UserDao mUserDao;
+public class DbQueryUserValid extends AsyncTask<User, Void, Boolean> implements DbGenericQuery<Boolean> {
+    private UserDao userDao;
 
-    public DbQueryUserExist(UserDao mUserDao) {
-        this.mUserDao = mUserDao;
+    public DbQueryUserValid(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
     protected Boolean doInBackground(User... users) {
-        return mUserDao.fetchUserExist(users[0].getMail()) == ConstantUtils.ONE;
+        return (userDao.fetchUserLogInValid(users[ConstantUtils.ZERO].getMail(), users[ConstantUtils.ZERO].getPassword()) == ConstantUtils.ONE);
     }
 
     @Override
     public Boolean executeQuery(User user) {
         try {
-            return this.execute(user).get();
+            return new DbQueryUserValid(userDao).execute(user).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

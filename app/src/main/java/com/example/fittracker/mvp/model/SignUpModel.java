@@ -1,11 +1,11 @@
-package com.example.fittracker.mvp.models;
+package com.example.fittracker.mvp.model;
 
-import com.example.fittracker.DbQueries.DbInsertUser;
-import com.example.fittracker.DbQueries.DbQueryUserExist;
+import com.example.fittracker.DbQuery.DbInsertUser;
+import com.example.fittracker.DbQuery.DbQueryUserExist;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
 import com.example.fittracker.UserRoomDatabase;
-import com.example.fittracker.mvp.contracts.SignUpContract;
+import com.example.fittracker.mvp.contract.SignUpContract;
 
 public class SignUpModel implements SignUpContract.Model {
     private UserRoomDatabase db;

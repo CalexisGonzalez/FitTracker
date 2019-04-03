@@ -1,16 +1,16 @@
-package com.example.fittracker.DbQueries;
+package com.example.fittracker.DbQuery;
 
 import android.os.AsyncTask;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
 
-public class DbInsertUser extends AsyncTask<User, Void, Void> implements DbBooleanQuery<Void> {
+public class DbInsertUser extends AsyncTask<User, Void, Void> implements DbGenericQuery<Void> {
     @Override
     public Void executeQuery(User user) {
         this.execute(user);
         return null;
-
     }
 
     private UserDao mUserDao;
@@ -21,7 +21,7 @@ public class DbInsertUser extends AsyncTask<User, Void, Void> implements DbBoole
 
     @Override
     protected Void doInBackground(User... users) {
-        mUserDao.insert(users[0]);
+        mUserDao.insert(users[ConstantUtils.ZERO]);
         return null;
     }
 }

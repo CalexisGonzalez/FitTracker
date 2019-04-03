@@ -1,6 +1,6 @@
-package com.example.fittracker.mvp.models;
+package com.example.fittracker.mvp.model;
 
-import com.example.fittracker.mvp.contracts.MainScreenContract;
+import com.example.fittracker.mvp.contract.MainScreenContract;
 
 public class MainScreenModel implements MainScreenContract.Model {
     public MainScreenModel(){

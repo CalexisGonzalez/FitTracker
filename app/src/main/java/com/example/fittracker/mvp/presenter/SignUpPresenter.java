@@ -1,8 +1,8 @@
-package com.example.fittracker.mvp.presenters;
+package com.example.fittracker.mvp.presenter;
 
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
-import com.example.fittracker.mvp.contracts.SignUpContract;
+import com.example.fittracker.mvp.contract.SignUpContract;
 
 public class SignUpPresenter implements SignUpContract.Presenter {
     private SignUpContract.Model model;

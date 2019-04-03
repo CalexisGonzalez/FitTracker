@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {User.class}, version = 2)
+@Database(entities = {User.class}, version = BuildConfig.db_version)
 public abstract class UserRoomDatabase extends RoomDatabase {
     private static volatile UserRoomDatabase INSTANCE;
 
@@ -15,7 +15,7 @@ public abstract class UserRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (UserRoomDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserRoomDatabase.class, "user_table")
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserRoomDatabase.class, ConstantUtils.DB_USER_TABLE)
                             .fallbackToDestructiveMigration().build();
                 }
             }

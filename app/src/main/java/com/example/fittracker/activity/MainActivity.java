@@ -1,4 +1,4 @@
-package com.example.fittracker.activities;
+package com.example.fittracker.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.fittracker.MainActivityView;
 import com.example.fittracker.R;
 import com.example.fittracker.UserRoomDatabase;
-import com.example.fittracker.mvp.contracts.LogInContract;
-import com.example.fittracker.mvp.models.MainActivityModel;
-import com.example.fittracker.mvp.presenters.MainActivityPresenter;
+import com.example.fittracker.mvp.contract.LogInContract;
+import com.example.fittracker.mvp.model.MainActivityModel;
+import com.example.fittracker.mvp.presenter.MainActivityPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

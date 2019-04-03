@@ -1,4 +1,4 @@
-package com.example.fittracker.mvp.contracts;
+package com.example.fittracker.mvp.contract;
 
 public interface MainScreenContract {
     interface Presenter {

@@ -1,4 +1,4 @@
-package com.example.fittracker.activities;
+package com.example.fittracker.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.fittracker.R;
 import com.example.fittracker.UserRoomDatabase;
-import com.example.fittracker.mvp.contracts.SignUpContract;
-import com.example.fittracker.mvp.models.SignUpModel;
-import com.example.fittracker.mvp.presenters.SignUpPresenter;
-import com.example.fittracker.mvp.views.SignUpView;
+import com.example.fittracker.mvp.contract.SignUpContract;
+import com.example.fittracker.mvp.model.SignUpModel;
+import com.example.fittracker.mvp.presenter.SignUpPresenter;
+import com.example.fittracker.mvp.view.SignUpView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

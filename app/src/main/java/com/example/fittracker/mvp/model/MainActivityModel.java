@@ -1,12 +1,10 @@
-package com.example.fittracker.mvp.models;
+package com.example.fittracker.mvp.model;
 
-import com.example.fittracker.DbQueries.DbQueryUserValid;
+import com.example.fittracker.DbQuery.DbQueryUserValid;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
 import com.example.fittracker.UserRoomDatabase;
-import com.example.fittracker.mvp.contracts.LogInContract;
-
-import java.util.concurrent.ExecutionException;
+import com.example.fittracker.mvp.contract.LogInContract;
 
 public class MainActivityModel implements LogInContract.Model {
     private UserRoomDatabase db;

@@ -1,12 +1,11 @@
-package com.example.fittracker.mvp.views;
+package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fittracker.R;
-import com.example.fittracker.User;
-import com.example.fittracker.mvp.contracts.SignUpContract;
+import com.example.fittracker.mvp.contract.SignUpContract;
 
 import java.lang.ref.WeakReference;
 
