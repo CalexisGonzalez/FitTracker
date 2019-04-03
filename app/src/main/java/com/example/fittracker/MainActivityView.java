@@ -15,13 +15,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivityView implements LogInContract.View {
-    @BindView(R.id.main_activity_text_mail_usuario) EditText mail;
+    @BindView(R.id.main_activity_text_mail_user) EditText mail;
     @BindView(R.id.main_activity_text_password) EditText password;
-    private WeakReference<Activity> actividad;
+    private WeakReference<Activity> activity;
 
     public MainActivityView(Activity actividad) {
         ButterKnife.bind(this, actividad);
-        this.actividad = new WeakReference<Activity>(actividad);
+        this.activity = new WeakReference<Activity>(actividad);
     }
 
     @Override
@@ -36,20 +36,20 @@ public class MainActivityView implements LogInContract.View {
 
     @Override
     public void logInError() {
-        Toast.makeText(actividad.get(), R.string.error_loginerror, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.get(), R.string.error_loginerror, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSignUpPressed() {
         //Change to registration screen
-        Intent intent = new Intent(actividad.get(), SignUpActivity.class);
-        actividad.get().startActivity(intent);
+        Intent intent = new Intent(activity.get(), SignUpActivity.class);
+        activity.get().startActivity(intent);
     }
 
     @Override
     public void onValidLogin() {
         //Change to valid login screen
-        Intent intent = new Intent(actividad.get(), MainScreenActivity.class);
-        actividad.get().startActivity(intent);
+        Intent intent = new Intent(activity.get(), MainScreenActivity.class);
+        activity.get().startActivity(intent);
     }
 }

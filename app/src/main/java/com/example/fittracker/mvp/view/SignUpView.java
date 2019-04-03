@@ -74,4 +74,9 @@ public class SignUpView implements SignUpContract.View {
     public void onCancel() {
         activity.get().finish();
     }
+
+    @Override
+    public void emailFormatError() {
+        Toast.makeText(activity.get(),R.string.error_emailformat ,Toast.LENGTH_SHORT).show();
+    }
 }
