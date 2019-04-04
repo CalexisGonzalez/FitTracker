@@ -27,4 +27,11 @@ public class MainScreenActivity extends AppCompatActivity {
     }
     @OnClick(R.id.mainscreen_activity_button_settings)
     public void onSettingsPressed(){ presenter.onSettingsPressed();}
+
+    @Override
+    public void onBackPressed() {
+        presenter.onBackPressed();
+    }
+    @OnClick(R.id.main_screen_button_log_out)
+    public void onLogOutPressed(){ presenter.onLogOutPressed();}
 }

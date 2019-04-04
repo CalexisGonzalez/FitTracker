@@ -14,8 +14,9 @@ public class MainActivityPresenter implements LogInContract.Presenter {
 
     @Override
     public void onLogInPressed() {
-        if (mModel.isValidLogIn(new User(mView.getEmail(), mView.getPassword()))) {
-            mView.onValidLogin();
+        User user = new User(mView.getEmail(), mView.getPassword());
+        if (mModel.isValidLogIn(user)) {
+            mView.onValidLogin(mModel.getUserId(user));
         } else {
             mView.logInError();
         }

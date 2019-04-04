@@ -4,14 +4,14 @@ import com.example.fittracker.User;
 
 public interface UserSettingsContract {
     interface Model{
-        public void onApplyChanges();
-        public void getUserData(User user);
+        public void onApplyChanges(User user);
+        public User getUserData(int id);
     }
     interface View{
-        public void onEmailFocusChange();
-        public void onPasswordFocusChange();
-        public void onNameFocusChange();
-        public void onSurnameFocusChange();
+        public void onEmailClick();
+        public void onPasswordClick();
+        public void onNameClick();
+        public void onSurnameClick();
         public void onApplyChangesClick();
         public void onCancelClick();
         public String getName();
@@ -19,12 +19,14 @@ public interface UserSettingsContract {
         public String getMail();
         public String getPassword();
         public void onCreate(String mail,String password,String name,String surname);
+
+        void printError();
     }
     interface Presenter{
-        public void onEmailFocusChange();
-        public void onPasswordFocusChange();
-        public void onNameFocusChange();
-        public void onSurnameFocusChange();
+        public void onEmailClick();
+        public void onPasswordClick();
+        public void onNameClick();
+        public void onSurnameClick();
         public void onApplyChangesClick();
         public void onCancelClick();
         public void onCreate();

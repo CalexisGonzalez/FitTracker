@@ -1,8 +1,10 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
@@ -34,33 +36,66 @@ public class UserSettingsView implements UserSettingsContract.View {
     }
 
     @Override
-    public void onEmailFocusChange() {
-
+    public void onEmailClick() {
+        mailView.setVisibility(View.GONE);
+        mailEdit.setVisibility(View.VISIBLE);
+        resetName();
+        resetPassword();
+        resetSurname();
+    }
+    private void resetEmail(){
+        mailEdit.setVisibility(View.GONE);
+        mailView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onPasswordFocusChange() {
-
+    public void onPasswordClick() {
+        passwordView.setVisibility(View.GONE);
+        passwordEdit.setVisibility(View.VISIBLE);
+        resetName();
+        resetSurname();
+        resetEmail();
+    }
+    private void resetPassword(){
+        passwordEdit.setVisibility(View.GONE);
+        passwordView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onNameFocusChange() {
-
+    public void onNameClick() {
+        nameView.setVisibility(View.GONE);
+        nameEdit.setVisibility(View.VISIBLE);
+        resetSurname();
+        resetEmail();
+        resetPassword();
+    }
+    private void resetName(){
+        nameEdit.setVisibility(View.GONE);
+        nameView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onSurnameFocusChange() {
-
+    public void onSurnameClick() {
+        surnameView.setVisibility(View.GONE);
+        surnameEdit.setVisibility(View.VISIBLE);
+        resetEmail();
+        resetPassword();
+        resetName();
+    }
+    private void resetSurname(){
+        surnameEdit.setVisibility(View.GONE);
+        surnameView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onApplyChangesClick() {
-
+        Toast.makeText(activity.get(),R.string.msg_on_changes_applied,Toast.LENGTH_LONG).show();
+        activity.get().finish();
     }
 
     @Override
     public void onCancelClick() {
-
+        activity.get().finish();
     }
 
     @Override
@@ -93,5 +128,10 @@ public class UserSettingsView implements UserSettingsContract.View {
         nameView.setText(name);
         surnameEdit.setText(surname);
         surnameView.setText(surname);
+    }
+
+    @Override
+    public void printError() {
+        Toast.makeText(activity.get(), R.string.error_usersettings_dberror, Toast.LENGTH_SHORT).show();
     }
 }

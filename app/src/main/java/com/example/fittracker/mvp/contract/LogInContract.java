@@ -11,6 +11,8 @@ public interface LogInContract {
 
     interface Model {
         boolean isValidLogIn(User user);
+
+        int getUserId(User user);
     }
 
     interface View {
@@ -22,6 +24,6 @@ public interface LogInContract {
 
         void onSignUpPressed();
 
-        void onValidLogin();
+        void onValidLogin(int id);
     }
 }

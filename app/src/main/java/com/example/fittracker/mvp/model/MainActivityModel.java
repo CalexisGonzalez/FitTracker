@@ -1,5 +1,6 @@
 package com.example.fittracker.mvp.model;
 
+import com.example.fittracker.DbQuery.DbFetchUserId;
 import com.example.fittracker.DbQuery.DbQueryUserValid;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
@@ -19,5 +20,10 @@ public class MainActivityModel implements LogInContract.Model {
     @Override
     public boolean isValidLogIn(User userInput) {
         return new DbQueryUserValid(userDao).executeQuery(userInput);
+    }
+
+    @Override
+    public int getUserId(User user) {
+        return new DbFetchUserId(userDao).executeQuery(user);
     }
 }

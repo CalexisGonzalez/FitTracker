@@ -15,4 +15,14 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     public void onSettingsPressed() {
         view.onSettingsPressed();
     }
+
+    @Override
+    public void onBackPressed() {
+        view.onBackPressed();
+    }
+
+    @Override
+    public void onLogOutPressed() {
+        view.onLogOutPressed();
+    }
 }
