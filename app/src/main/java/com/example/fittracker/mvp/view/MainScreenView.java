@@ -39,7 +39,7 @@ public class MainScreenView implements MainScreenContract.View {
     public void onLogOutPressed() {
         SharedPreferences.Editor editor = activity.get().getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE)
                 .edit();
-        editor.putInt(ConstantUtils.USER_PREFERENCES_ID,-1);
+        editor.putInt(ConstantUtils.USER_PREFERENCES_ID,ConstantUtils.NEGATIVE_ONE);
         editor.apply();
         activity.get().finish();
     }

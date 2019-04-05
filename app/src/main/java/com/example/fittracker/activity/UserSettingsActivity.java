@@ -27,28 +27,27 @@ public class UserSettingsActivity extends AppCompatActivity {
 
     public void init() {
         presenter = new UserSettingsPresenter(new UserSettingsView(this)
-                ,new UserSettingsModel(UserRoomDatabase.getDatabase(this))
-                ,getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)
-                .getInt(ConstantUtils.USER_PREFERENCES_ID,ConstantUtils.ZERO));
-        presenter.onCreate();
-    }//Check if its okay to pass the shared pref via constructor to presenter
+                ,new UserSettingsModel(UserRoomDatabase.getDatabase(this)
+                ,getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)));
+        presenter.init();
+    }
 
-    @OnClick(R.id.usersettings_activity_textview_email)
+    @OnClick(R.id.usersettings_activity_edittext_email)
     public void onEmailFocusChange() {
         presenter.onEmailClick();
     }
 
-    @OnClick(R.id.usersettings_activity_textview_password)
+    @OnClick(R.id.usersettings_activity_edittext_password)
     public void onPasswordFocusChange() {
         presenter.onPasswordClick();
     }
 
-    @OnClick(R.id.usersettings_activity_textview_name)
+    @OnClick(R.id.usersettings_activity_edittext_name)
     public void onNameFocusChange() {
         presenter.onNameClick();
     }
 
-    @OnClick(R.id.usersettings_activity_textview_surname)
+    @OnClick(R.id.usersettings_activity_edittext_surname)
     public void onSurnameFocusChange() {
         presenter.onSurnameClick();
     }
@@ -62,4 +61,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     public void onCancelClicked() {
         presenter.onCancelClick();
     }
+
+    @OnClick(R.id.usersettings_activity_button_sendmail)
+    public void onSendMailClick() { presenter.onSendMailClick();}
 }

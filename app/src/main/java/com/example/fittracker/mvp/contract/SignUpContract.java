@@ -1,5 +1,7 @@
 package com.example.fittracker.mvp.contract;
 
+import android.content.Intent;
+
 import com.example.fittracker.User;
 
 public interface SignUpContract {
@@ -7,6 +9,8 @@ public interface SignUpContract {
         void onSignUpPressed();
 
         void onCancelPressed();
+
+        void onSendMailPressed();
     }
 
     interface Model {
@@ -37,5 +41,7 @@ public interface SignUpContract {
         void succesfulSignUp();
 
         void emailFormatError();
+
+        void onSendMailPressed(Intent intent);
     }
 }

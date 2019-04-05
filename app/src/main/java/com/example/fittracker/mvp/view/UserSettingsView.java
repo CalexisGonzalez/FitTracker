@@ -1,11 +1,15 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
 
@@ -15,13 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UserSettingsView implements UserSettingsContract.View {
-    @BindView(R.id.usersettings_activity_textview_surname) TextView surnameView;
     @BindView(R.id.usersettings_activity_edittext_surname) EditText surnameEdit;
-    @BindView(R.id.usersettings_activity_textview_name) TextView nameView;
     @BindView(R.id.usersettings_activity_edittext_name) EditText nameEdit;
-    @BindView(R.id.usersettings_activity_textview_email) TextView mailView;
     @BindView(R.id.usersettings_activity_edittext_email) EditText mailEdit;
-    @BindView(R.id.usersettings_activity_textview_password) TextView passwordView;
     @BindView(R.id.usersettings_activity_edittext_password) EditText passwordEdit;
     private WeakReference<Activity> activity;
 
@@ -37,59 +37,27 @@ public class UserSettingsView implements UserSettingsContract.View {
 
     @Override
     public void onEmailClick() {
-        mailView.setVisibility(View.GONE);
-        mailEdit.setVisibility(View.VISIBLE);
-        resetName();
-        resetPassword();
-        resetSurname();
-    }
-    private void resetEmail(){
-        mailEdit.setVisibility(View.GONE);
-        mailView.setVisibility(View.VISIBLE);
+        mailEdit.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
     }
 
     @Override
     public void onPasswordClick() {
-        passwordView.setVisibility(View.GONE);
-        passwordEdit.setVisibility(View.VISIBLE);
-        resetName();
-        resetSurname();
-        resetEmail();
-    }
-    private void resetPassword(){
-        passwordEdit.setVisibility(View.GONE);
-        passwordView.setVisibility(View.VISIBLE);
+        passwordEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
 
     @Override
     public void onNameClick() {
-        nameView.setVisibility(View.GONE);
-        nameEdit.setVisibility(View.VISIBLE);
-        resetSurname();
-        resetEmail();
-        resetPassword();
-    }
-    private void resetName(){
-        nameEdit.setVisibility(View.GONE);
-        nameView.setVisibility(View.VISIBLE);
+        nameEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
     }
 
     @Override
     public void onSurnameClick() {
-        surnameView.setVisibility(View.GONE);
-        surnameEdit.setVisibility(View.VISIBLE);
-        resetEmail();
-        resetPassword();
-        resetName();
-    }
-    private void resetSurname(){
-        surnameEdit.setVisibility(View.GONE);
-        surnameView.setVisibility(View.VISIBLE);
+        surnameEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
     }
 
     @Override
     public void onApplyChangesClick() {
-        Toast.makeText(activity.get(),R.string.msg_on_changes_applied,Toast.LENGTH_LONG).show();
+        Toast.makeText(activity.get(), R.string.msg_on_changes_applied, Toast.LENGTH_LONG).show();
         activity.get().finish();
     }
 
@@ -119,19 +87,42 @@ public class UserSettingsView implements UserSettingsContract.View {
     }
 
     @Override
-    public void onCreate(String mail, String password, String name, String surname) {
+    public void initMail(String mail) {
         mailEdit.setText(mail);
-        mailView.setText(mail);
-        passwordEdit.setText(password);
-        passwordView.setText(password);
-        nameEdit.setText(name);
-        nameView.setText(name);
-        surnameEdit.setText(surname);
-        surnameView.setText(surname);
     }
 
     @Override
-    public void printError() {
+    public void initPassword(String password) {
+        passwordEdit.setText(password);
+    }
+
+    @Override
+    public void initName(String name) {
+        nameEdit.setText(name);
+    }
+
+    @Override
+    public void initSurname(String surname) {
+        surnameEdit.setText(surname);
+    }
+
+    @Override
+    public void printFetchingError() {
         Toast.makeText(activity.get(), R.string.error_usersettings_dberror, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSendMailClick(Intent intent) {
+
+    }
+
+    @Override
+    public void printMissingFieldError() {
+        Toast.makeText(activity.get(),R.string.error_signup_missing_field, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void printInvalidEmail() {
+        Toast.makeText(activity.get(),R.string.error_emailformat,Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,8 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -79,5 +81,10 @@ public class SignUpView implements SignUpContract.View {
     @Override
     public void emailFormatError() {
         Toast.makeText(activity.get(),R.string.error_emailformat ,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSendMailPressed(Intent intent) {
+
     }
 }

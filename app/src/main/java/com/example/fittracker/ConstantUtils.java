@@ -8,5 +8,9 @@ public class ConstantUtils {
     public static final String EMAIL_FORMAT = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
     public static final String USER_PREFERENCES_ID = "user_id";
     public static final String USER_PREFERENCES = "user_preferences";
-
+    public static final int NEGATIVE_ONE = 0;
+    public static final String EMAIL_SUBJECT = "Signup user information";
+    public static final String MAIL_TO = "mailto:";
+    public static final String SUBJECT = "?subject=";
+    public static final String BODY = "&body=";
 }

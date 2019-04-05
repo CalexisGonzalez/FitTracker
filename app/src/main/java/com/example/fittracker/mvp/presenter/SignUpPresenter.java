@@ -1,5 +1,8 @@
 package com.example.fittracker.mvp.presenter;
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.SignUpContract;
@@ -56,5 +59,16 @@ public class SignUpPresenter implements SignUpContract.Presenter {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    @Override
+    public void onSendMailPressed() {
+        if (fieldMissing()){
+            view.missingFieldError();
+        }else if (!isEmailValid(view.getEmail())){
+            view.emailFormatError();
+        }else {
+            //Mail intent creation here
+        }
     }
 }

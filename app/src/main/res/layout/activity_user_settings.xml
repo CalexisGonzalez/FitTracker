@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/signup_activity_layout_vertical_margin">
@@ -22,13 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/usersettings_activity_textview_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:inputType="none"
             android:visibility="visible" />
     </TableRow>
 
@@ -49,12 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/usersettings_activity_textview_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:inputType="none"
             android:visibility="visible" />
     </TableRow>
 
@@ -75,13 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/usersettings_activity_textview_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:inputType="none"
             android:visibility="visible" />
     </TableRow>
 
@@ -102,13 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/usersettings_activity_textview_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:inputType="none"
             android:visibility="visible" />
     </TableRow>
 
@@ -131,4 +107,11 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_apply_changes" />
     </TableRow>
+
+    <Button
+        android:id="@+id/usersettings_activity_button_sendmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_email_information" />
+
 </TableLayout>
