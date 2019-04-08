@@ -17,4 +17,6 @@ public class ConstantUtils {
     public static final String EMAIL_SUBJECT = "This is your signup information";
     public static final String SENDMAIL_LOG = "SendMail";
     public static final String DATAHANDLER_TYPE = "text/plain";
+    public static final Character COMA = ',';
+    public static final String MAIL_HOST = "smtp.gmail.com";
 }

@@ -24,9 +24,7 @@ public class DbFetchUserData extends AsyncTask<Integer, Void, User> implements D
     public User executeQuery(Integer id) {
         try {
             return this.execute(id).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException|InterruptedException e) {
             e.printStackTrace();
         }
         return null;

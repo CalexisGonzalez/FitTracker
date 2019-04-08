@@ -17,7 +17,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class GMailSender extends javax.mail.Authenticator {
-    private String mailhost = "smtp.gmail.com";
+    private String mailhost = ConstantUtils.MAIL_HOST;
     private String user;
     private String password;
     private Session session;
@@ -56,7 +56,7 @@ public class GMailSender extends javax.mail.Authenticator {
         message.setSender(new InternetAddress(sender));
         message.setSubject(subject);
         message.setDataHandler(handler);
-        if (recipients.indexOf(',') > 0)
+        if (recipients.indexOf(ConstantUtils.COMA) > ConstantUtils.ZERO)
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
         else
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
