@@ -33,22 +33,22 @@ public class UserSettingsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.usersettings_activity_edittext_email)
-    public void onEmailFocusChange() {
+    public void onEmailClick() {
         presenter.onEmailClick();
     }
 
     @OnClick(R.id.usersettings_activity_edittext_password)
-    public void onPasswordFocusChange() {
+    public void onPasswordClick() {
         presenter.onPasswordClick();
     }
 
     @OnClick(R.id.usersettings_activity_edittext_name)
-    public void onNameFocusChange() {
+    public void onNameClick() {
         presenter.onNameClick();
     }
 
     @OnClick(R.id.usersettings_activity_edittext_surname)
-    public void onSurnameFocusChange() {
+    public void onSurnameClick() {
         presenter.onSurnameClick();
     }
 
@@ -61,7 +61,4 @@ public class UserSettingsActivity extends AppCompatActivity {
     public void onCancelClicked() {
         presenter.onCancelClick();
     }
-
-    @OnClick(R.id.usersettings_activity_button_sendmail)
-    public void onSendMailClick() { presenter.onSendMailClick();}
 }

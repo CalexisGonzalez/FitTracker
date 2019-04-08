@@ -1,10 +1,7 @@
 package com.example.fittracker.mvp.presenter;
 
-import android.content.Intent;
-import android.net.Uri;
-
 import com.example.fittracker.ConstantUtils;
-import com.example.fittracker.R;
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
 
@@ -46,10 +43,13 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
     public void onApplyChangesClick() {
         if (fieldMissing()) {
             view.printMissingFieldError();
+        } else if (!isEmailValid(view.getMail())){
+            view.printInvalidEmail();
         } else {
             User user = new User(view.getMail(), view.getPassword(), view.getName(), view.getSurname());
             user.setId(userId);
             model.onApplyChanges(user);
+            if (view.checkBoxMailPressed()){ onSendMailPressed();}
             view.onApplyChangesClick();
         }
     }
@@ -74,14 +74,11 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
     }
 
     @Override
-    public void onSendMailClick() {
-        if (fieldMissing()) {
-            view.printMissingFieldError();
-        }else if (!isEmailValid(view.getMail())){
-            view.printInvalidEmail();
-        }else {
-           //Mail intent creation here
-        }
+    public void onSendMailPressed() {
+        GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER,ConstantUtils.PASSWORD_SENDER);
+        String body = view.getMail() + System.lineSeparator() + view.getPassword() + System.lineSeparator()
+                + view.getName() + System.lineSeparator() + view.getSurname();
+        view.onSendMailPressed(sender,ConstantUtils.EMAIL_SUBJECT, body, view.getMail());
     }
 
     private boolean fieldMissing() {

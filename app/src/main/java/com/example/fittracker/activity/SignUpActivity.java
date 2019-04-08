@@ -40,7 +40,4 @@ public class SignUpActivity extends AppCompatActivity {
     public void onSignUpPressed() {
         presenter.onSignUpPressed();
     }
-
-    @OnClick(R.id.signup_activity_button_sendmail)
-    public void onSendMailPressed(){ presenter.onSendMailPressed();}
 }

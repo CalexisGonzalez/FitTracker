@@ -2,6 +2,7 @@ package com.example.fittracker.mvp.contract;
 
 import android.content.Intent;
 
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 
 public interface UserSettingsContract {
@@ -25,10 +26,11 @@ public interface UserSettingsContract {
         public void initPassword(String password);
         public void initName(String name);
         public void initSurname(String surname);
-        public void onSendMailClick(Intent intent);
+        public void onSendMailPressed(GMailSender sender, String subject, String body, String recipient);
         public void printFetchingError();
         public void printMissingFieldError();
         public void printInvalidEmail();
+        public boolean checkBoxMailPressed();
     }
     interface Presenter{
         public void onEmailClick();
@@ -38,6 +40,6 @@ public interface UserSettingsContract {
         public void onApplyChangesClick();
         public void onCancelClick();
         public void init();
-        public void onSendMailClick();
+        public void onSendMailPressed();
     }
 }

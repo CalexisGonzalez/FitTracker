@@ -3,9 +3,13 @@ package com.example.fittracker.mvp.view;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fittracker.ConstantUtils;
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.SignUpContract;
 
@@ -21,6 +25,8 @@ public class SignUpView implements SignUpContract.View {
     @BindView(R.id.signup_activity_text_pass_rep) EditText passwordRep;
     @BindView(R.id.signup_activity_text_nombre) EditText name;
     @BindView(R.id.signup_activity_text_apellido) EditText surname;
+    @BindView(R.id.signup_activity_chckbox_sendmail)
+    CheckBox mailBox;
 
     public SignUpView(Activity activity) {
         this.activity = new WeakReference<>(activity);
@@ -84,7 +90,23 @@ public class SignUpView implements SignUpContract.View {
     }
 
     @Override
-    public void onSendMailPressed(Intent intent) {
+    public void onSendMailPressed(final GMailSender sender,final String subject,final String body, final String recipient) {
+        new Thread(new Runnable() {
 
+            @Override
+            public void run() {
+                try {
+                    sender.sendMail(subject,body,sender.getSenderUser(),recipient);
+                } catch (Exception e) {
+                    Log.e(ConstantUtils.SENDMAIL_LOG, e.getMessage(), e);
+                }
+            }
+
+        }).start();
+    }
+
+    @Override
+    public boolean checkboxMailPressed() {
+        return mailBox.isChecked();
     }
 }

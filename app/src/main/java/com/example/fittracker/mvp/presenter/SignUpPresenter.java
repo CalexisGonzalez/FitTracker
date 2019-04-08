@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.example.fittracker.ConstantUtils;
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.SignUpContract;
 
@@ -34,6 +35,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
                 view.userAlreadyExists();
             } else {
                 model.registrateUser(user);
+                if (view.checkboxMailPressed()){ onSendMailPressed();}
                 view.succesfulSignUp();
             }
         }
@@ -63,12 +65,9 @@ public class SignUpPresenter implements SignUpContract.Presenter {
 
     @Override
     public void onSendMailPressed() {
-        if (fieldMissing()){
-            view.missingFieldError();
-        }else if (!isEmailValid(view.getEmail())){
-            view.emailFormatError();
-        }else {
-            //Mail intent creation here
-        }
+            GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER,ConstantUtils.PASSWORD_SENDER);
+            String body = view.getEmail() + System.lineSeparator() + view.getPassword() + System.lineSeparator()
+                    + view.getName() + System.lineSeparator() + view.getSurname();
+            view.onSendMailPressed(sender,ConstantUtils.EMAIL_SUBJECT, body, view.getEmail());
     }
 }
