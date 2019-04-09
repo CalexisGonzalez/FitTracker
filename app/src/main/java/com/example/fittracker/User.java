@@ -7,8 +7,9 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = ConstantUtils.DB_USER_TABLE)
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
+    private Integer id;
     private String mail;
     private String password;
     private String name;
@@ -22,9 +23,15 @@ public class User {
     }
 
     @Ignore
-    public User(String mail, String password){
+    public User(String mail, String password) {
         this.mail = mail;
         this.password = password;
+    }
+
+    public void setId(Integer id){ this.id = id;}
+
+    public Integer getId() {
+        return id;
     }
 
     public String getMail() {

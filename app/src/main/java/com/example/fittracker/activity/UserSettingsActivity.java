@@ -3,6 +3,7 @@ package com.example.fittracker.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.UserRoomDatabase;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
@@ -12,8 +13,6 @@ import com.example.fittracker.mvp.view.UserSettingsView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnFocusChange;
-import butterknife.OnLongClick;
 
 public class UserSettingsActivity extends AppCompatActivity {
     private UserSettingsContract.Presenter presenter;
@@ -26,38 +25,40 @@ public class UserSettingsActivity extends AppCompatActivity {
         init();
     }
 
-    public void init(){
-        presenter = new UserSettingsPresenter(new UserSettingsView(
-                this),new UserSettingsModel(UserRoomDatabase.getDatabase(this)));
+    public void init() {
+        presenter = new UserSettingsPresenter(new UserSettingsView(this),
+                new UserSettingsModel(UserRoomDatabase.getDatabase(this),
+                        getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)));
+        presenter.init();
     }
 
-    @OnFocusChange(R.id.usersettings_activity_textview_email)
-    public void onEmailFocusChange() {
-        presenter.onEmailFocusChange();
+    @OnClick(R.id.usersettings_activity_edittext_email)
+    public void onEmailClick() {
+        presenter.onEmailClick();
     }
 
-    @OnFocusChange(R.id.usersettings_activity_textview_password)
-    public void onPasswordFocusChange() {
-        presenter.onPasswordFocusChange();
+    @OnClick(R.id.usersettings_activity_edittext_password)
+    public void onPasswordClick() {
+        presenter.onPasswordClick();
     }
 
-    @OnFocusChange(R.id.usersettings_activity_textview_name)
-    public void onNameFocusChange() {
-        onNameFocusChange();
+    @OnClick(R.id.usersettings_activity_edittext_name)
+    public void onNameClick() {
+        presenter.onNameClick();
     }
 
-    @OnFocusChange(R.id.usersettings_activity_textview_surname)
-    public void onSurnameFocusChange() {
-        onSurnameFocusChange();
+    @OnClick(R.id.usersettings_activity_edittext_surname)
+    public void onSurnameClick() {
+        presenter.onSurnameClick();
     }
 
     @OnClick(R.id.usersettings_activity_button_apply_changes)
-    public void onApplyChangesClicked(){
+    public void onApplyChangesClicked() {
         presenter.onApplyChangesClick();
     }
 
     @OnClick(R.id.usersettings_activity_button_cancel)
-    public void onCancelClicked(){
+    public void onCancelClicked() {
         presenter.onCancelClick();
     }
 }

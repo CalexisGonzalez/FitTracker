@@ -18,4 +18,9 @@
     <string name="error_signup_missing_field">All fields must be filled</string>
     <string name="msg_on_valid_signup">Succesful user registration</string>
     <string name="btn_apply_changes">Apply Changes</string>
+    <string name="error_usersettings_dberror">An error occurred while retrieving user information</string>
+    <string name="msg_on_changes_applied">Changes applied successfully</string>
+    <string name="btn_logout">Log Out</string>
+    <string name="btn_email_information">Mail your user information</string>
+    <string name="error_send_mail">An error occured while trying to send the mail</string>
 </resources>

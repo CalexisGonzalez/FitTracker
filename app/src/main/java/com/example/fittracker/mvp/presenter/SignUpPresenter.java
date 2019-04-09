@@ -1,6 +1,7 @@
 package com.example.fittracker.mvp.presenter;
 
 import com.example.fittracker.ConstantUtils;
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.SignUpContract;
 
@@ -31,6 +32,9 @@ public class SignUpPresenter implements SignUpContract.Presenter {
                 view.userAlreadyExists();
             } else {
                 model.registrateUser(user);
+                if (view.checkboxMailPressed()) {
+                    onSendMailPressed();
+                }
                 view.succesfulSignUp();
             }
         }
@@ -56,5 +60,13 @@ public class SignUpPresenter implements SignUpContract.Presenter {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    @Override
+    public void onSendMailPressed() {
+        GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER, ConstantUtils.PASSWORD_SENDER);
+        String body = view.getEmail() + System.lineSeparator() + view.getPassword() + System.lineSeparator() +
+                view.getName() + System.lineSeparator() + view.getSurname();
+        view.onSendMailPressed(sender, ConstantUtils.EMAIL_SUBJECT, body, view.getEmail());
     }
 }

@@ -17,4 +17,6 @@
     <dimen name="signup_activity_layout_vertical_margin">100dp</dimen>
     <dimen name="mainscreen_settings_horizontal_margin">16dp</dimen>
     <dimen name="mainscreen_settings_vertical_margin">16dp</dimen>
+    <dimen name="mainscreen_logout_left_margin">72dp</dimen>
+    <dimen name="mainscreen_logout_bottom_margin">95dp</dimen>
 </resources>

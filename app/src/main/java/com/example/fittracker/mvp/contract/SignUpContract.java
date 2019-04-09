@@ -1,5 +1,6 @@
 package com.example.fittracker.mvp.contract;
 
+import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 
 public interface SignUpContract {
@@ -7,6 +8,8 @@ public interface SignUpContract {
         void onSignUpPressed();
 
         void onCancelPressed();
+
+        void onSendMailPressed();
     }
 
     interface Model {
@@ -37,5 +40,9 @@ public interface SignUpContract {
         void succesfulSignUp();
 
         void emailFormatError();
+
+        void onSendMailPressed(GMailSender sender, String subject, String body, String recipient);
+
+        boolean checkboxMailPressed();
     }
 }

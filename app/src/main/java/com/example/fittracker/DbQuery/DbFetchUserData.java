@@ -8,25 +8,25 @@ import com.example.fittracker.UserDao;
 
 import java.util.concurrent.ExecutionException;
 
-public class DbQueryUserValid extends AsyncTask<User, Void, Boolean> implements DbGenericQuery<Boolean, User> {
+public class DbFetchUserData extends AsyncTask<Integer, Void, User> implements DbGenericQuery<User, Integer> {
     private UserDao userDao;
 
-    public DbQueryUserValid(UserDao userDao) {
+    public DbFetchUserData(UserDao userDao) {
         this.userDao = userDao;
     }
 
     @Override
-    protected Boolean doInBackground(User... users) {
-        return (userDao.fetchUserLogInValid(users[ConstantUtils.ZERO].getMail(), users[ConstantUtils.ZERO].getPassword()) == ConstantUtils.ONE);
+    protected User doInBackground(Integer... ids) {
+        return (userDao.fetchUserData(ids[ConstantUtils.ZERO]));
     }
 
     @Override
-    public Boolean executeQuery(User user) {
+    public User executeQuery(Integer id) {
         try {
-            return this.execute(user).get();
+            return this.execute(id).get();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 }

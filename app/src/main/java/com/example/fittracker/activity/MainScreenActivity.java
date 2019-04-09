@@ -1,7 +1,7 @@
 package com.example.fittracker.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.MainScreenContract;
@@ -22,9 +22,23 @@ public class MainScreenActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         init();
     }
-    public void init(){
-        presenter = new MainScreenPresenter(new MainScreenView(this),new MainScreenModel());
+
+    public void init() {
+        presenter = new MainScreenPresenter(new MainScreenView(this), new MainScreenModel());
     }
+
     @OnClick(R.id.mainscreen_activity_button_settings)
-    public void onSettingsPressed(){ presenter.onSettingsPressed();}
+    public void onSettingsPressed() {
+        presenter.onSettingsPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        presenter.onBackPressed();
+    }
+
+    @OnClick(R.id.main_screen_button_log_out)
+    public void onLogOutPressed() {
+        presenter.onLogOutPressed();
+    }
 }
