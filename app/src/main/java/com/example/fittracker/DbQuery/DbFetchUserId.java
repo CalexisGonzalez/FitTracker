@@ -8,7 +8,7 @@ import com.example.fittracker.UserDao;
 
 import java.util.concurrent.ExecutionException;
 
-public class DbFetchUserId extends AsyncTask<User, Void, Integer> implements DbGenericQuery<Integer,User> {
+public class DbFetchUserId extends AsyncTask<User, Void, Integer> implements DbGenericQuery<Integer, User> {
     private UserDao userDao;
 
     public DbFetchUserId(UserDao userDao) {
@@ -24,9 +24,7 @@ public class DbFetchUserId extends AsyncTask<User, Void, Integer> implements DbG
     public Integer executeQuery(User user) {
         try {
             return this.execute(user).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         return 0;

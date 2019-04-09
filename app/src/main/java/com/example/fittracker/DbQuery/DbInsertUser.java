@@ -6,7 +6,7 @@ import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
 
-public class DbInsertUser extends AsyncTask<User, Void, Void> implements DbGenericQuery<Void,User> {
+public class DbInsertUser extends AsyncTask<User, Void, Void> implements DbGenericQuery<Void, User> {
     @Override
     public Void executeQuery(User user) {
         this.execute(user);

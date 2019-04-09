@@ -6,7 +6,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     private MainScreenContract.View view;
     private MainScreenContract.Model model;
 
-    public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model){
+    public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model) {
         this.model = model;
         this.view = view;
     }

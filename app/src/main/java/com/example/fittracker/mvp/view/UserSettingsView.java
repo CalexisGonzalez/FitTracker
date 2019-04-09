@@ -1,14 +1,10 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fittracker.ConstantUtils;
@@ -118,12 +114,12 @@ public class UserSettingsView implements UserSettingsContract.View {
 
     @Override
     public void printMissingFieldError() {
-        Toast.makeText(activity.get(),R.string.error_signup_missing_field, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.get(), R.string.error_signup_missing_field, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void printInvalidEmail() {
-        Toast.makeText(activity.get(),R.string.error_emailformat,Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.get(), R.string.error_emailformat, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -132,13 +128,13 @@ public class UserSettingsView implements UserSettingsContract.View {
     }
 
     @Override
-    public void onSendMailPressed(final GMailSender sender,final String subject,final String body,final String recipient) {
+    public void onSendMailPressed(final GMailSender sender, final String subject, final String body, final String recipient) {
         new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    sender.sendMail(subject,body,sender.getSenderUser(),recipient);
+                    sender.sendMail(subject, body, sender.getSenderUser(), recipient);
                 } catch (Exception e) {
                     Log.e(ConstantUtils.SENDMAIL_LOG, e.getMessage(), e);
                 }

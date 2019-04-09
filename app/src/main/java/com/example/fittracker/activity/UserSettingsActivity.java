@@ -27,8 +27,8 @@ public class UserSettingsActivity extends AppCompatActivity {
 
     public void init() {
         presenter = new UserSettingsPresenter(new UserSettingsView(this)
-                ,new UserSettingsModel(UserRoomDatabase.getDatabase(this)
-                ,getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)));
+                , new UserSettingsModel(UserRoomDatabase.getDatabase(this)
+                , getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)));
         presenter.init();
     }
 

@@ -1,8 +1,6 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -96,7 +94,7 @@ public class SignUpView implements SignUpContract.View {
             @Override
             public void run() {
                 try {
-                    sender.sendMail(subject,body,sender.getSenderUser(),recipient);
+                    sender.sendMail(subject, body, sender.getSenderUser(), recipient);
                 } catch (Exception e) {
                     Log.e(ConstantUtils.SENDMAIL_LOG, e.getMessage(), e);
                 }

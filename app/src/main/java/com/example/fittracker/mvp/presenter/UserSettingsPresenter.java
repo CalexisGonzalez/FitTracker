@@ -43,13 +43,15 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
     public void onApplyChangesClick() {
         if (fieldMissing()) {
             view.printMissingFieldError();
-        } else if (!isEmailValid(view.getMail())){
+        } else if (!isEmailValid(view.getMail())) {
             view.printInvalidEmail();
         } else {
             User user = new User(view.getMail(), view.getPassword(), view.getName(), view.getSurname());
             user.setId(userId);
             model.onApplyChanges(user);
-            if (view.checkBoxMailPressed()){ onSendMailPressed();}
+            if (view.checkBoxMailPressed()) {
+                onSendMailPressed();
+            }
             view.onApplyChangesClick();
         }
     }
@@ -75,10 +77,10 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
 
     @Override
     public void onSendMailPressed() {
-        GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER,ConstantUtils.PASSWORD_SENDER);
+        GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER, ConstantUtils.PASSWORD_SENDER);
         String body = view.getMail() + System.lineSeparator() + view.getPassword() + System.lineSeparator()
                 + view.getName() + System.lineSeparator() + view.getSurname();
-        view.onSendMailPressed(sender,ConstantUtils.EMAIL_SUBJECT, body, view.getMail());
+        view.onSendMailPressed(sender, ConstantUtils.EMAIL_SUBJECT, body, view.getMail());
     }
 
     private boolean fieldMissing() {

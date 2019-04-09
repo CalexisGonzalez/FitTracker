@@ -16,9 +16,9 @@ import butterknife.ButterKnife;
 public class MainScreenView implements MainScreenContract.View {
     private WeakReference<Activity> activity;
 
-    public MainScreenView(Activity activity){
+    public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
-        ButterKnife.bind(this,activity);
+        ButterKnife.bind(this, activity);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class MainScreenView implements MainScreenContract.View {
     public void onLogOutPressed() {
         SharedPreferences.Editor editor = activity.get().getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE)
                 .edit();
-        editor.putInt(ConstantUtils.USER_PREFERENCES_ID,ConstantUtils.NEGATIVE_ONE);
+        editor.putInt(ConstantUtils.USER_PREFERENCES_ID, ConstantUtils.NEGATIVE_ONE);
         editor.apply();
         activity.get().finish();
     }

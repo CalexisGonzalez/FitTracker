@@ -1,7 +1,5 @@
 package com.example.fittracker.mvp.contract;
 
-import android.content.Intent;
-
 import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 
