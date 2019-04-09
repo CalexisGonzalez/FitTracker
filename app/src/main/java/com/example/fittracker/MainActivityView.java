@@ -51,7 +51,8 @@ public class MainActivityView implements LogInContract.View {
     @Override
     public void onValidLogin(int id) {
         //Change to valid login screen
-        SharedPreferences.Editor editor = activity.get().getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = activity.get().
+                getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE).edit();
         editor.putInt(ConstantUtils.USER_PREFERENCES_ID, id);
         editor.apply();
         Intent intent = new Intent(activity.get(), MainScreenActivity.class);

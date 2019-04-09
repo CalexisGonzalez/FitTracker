@@ -65,8 +65,8 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     @Override
     public void onSendMailPressed() {
         GMailSender sender = new GMailSender(ConstantUtils.EMAIL_SENDER, ConstantUtils.PASSWORD_SENDER);
-        String body = view.getEmail() + System.lineSeparator() + view.getPassword() + System.lineSeparator()
-                + view.getName() + System.lineSeparator() + view.getSurname();
+        String body = view.getEmail() + System.lineSeparator() + view.getPassword() + System.lineSeparator() +
+                view.getName() + System.lineSeparator() + view.getSurname();
         view.onSendMailPressed(sender, ConstantUtils.EMAIL_SUBJECT, body, view.getEmail());
     }
 }
