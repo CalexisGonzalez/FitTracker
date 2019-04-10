@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_marginTop="@dimen/signup_activity_layout_vertical_margin">
 
     <TableRow
@@ -88,9 +88,10 @@
             android:visibility="visible" />
     </TableRow>
 
-    <TableRow
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
         android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
 
@@ -99,17 +100,21 @@
             android:id="@+id/usersettings_activity_button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/btn_cancel" />
 
         <Button
             android:id="@+id/usersettings_activity_button_apply_changes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/btn_apply_changes" />
-    </TableRow>
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/usersettings_activity_chckbox_sendmail"
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_email_information"/>

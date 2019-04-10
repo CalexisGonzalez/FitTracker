@@ -37,7 +37,6 @@
         android:layout_width="@dimen/main_activity_et_size"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_activity_et_mail_margin_horizontal"
-        android:layout_marginLeft="@dimen/main_activity_et_mail_margin_horizontal"
         android:layout_marginBottom="@dimen/main_activity_et_mail_bottom"
         android:ems="10"
         android:text="@string/title_email"
