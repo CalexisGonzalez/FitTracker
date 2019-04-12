@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/logo_anim_duration"
+    android:valueFrom="@dimen/logo_anim_value_from"
+    android:valueTo="@dimen/logo_anim_value_to"
+    android:valueType="floatType"
+    android:propertyName="rotation"
+    android:repeatCount="@integer/logo_anim_reps"/>
