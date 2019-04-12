@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="logo_anim_value_from" format="float" type="dimen">0.0</item>
+    <item name="logo_anim_value_to" format="float" type="dimen">360.0</item>
+</resources>

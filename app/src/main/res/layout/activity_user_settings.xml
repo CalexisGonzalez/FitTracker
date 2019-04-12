@@ -91,10 +91,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
-
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/usersettings_activity_button_cancel"
@@ -113,9 +112,9 @@
 
     <CheckBox
         android:id="@+id/usersettings_activity_chckbox_sendmail"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_email_information"/>
+        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
+        android:text="@string/btn_email_information" />
 </TableLayout>

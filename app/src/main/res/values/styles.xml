@@ -9,8 +9,9 @@
         <item name="android:fontFamily">@font/text_font</item>
         <item name="android:colorSecondary">@color/colorSecondary</item>
         <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/text_font_size</item>
         <item name="buttonStyle">@style/ButtonTheme</item>
+        <item name="imageButtonStyle">@style/ImageButtonTheme</item>
     </style>
 
     <style name="TransparentCompat" parent="@style/Theme.AppCompat.Light.DarkActionBar">
@@ -24,5 +25,9 @@
     <style name="ButtonTheme" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/my_button_bg</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="ImageButtonTheme" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/my_button_bg</item>
     </style>
 </resources>
