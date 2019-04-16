@@ -1,8 +1,12 @@
 package com.example.fittracker.activity;
 
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
@@ -14,6 +18,7 @@ import butterknife.OnClick;
 
 public class MainScreenActivity extends AppCompatActivity {
     private MainScreenContract.Presenter presenter;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +45,19 @@ public class MainScreenActivity extends AppCompatActivity {
     @OnClick(R.id.main_screen_button_log_out)
     public void onLogOutPressed() {
         presenter.onLogOutPressed();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case ConstantUtils
+                    .LOCATION_REQUEST_CODE: {
+                if (grantResults.length > ConstantUtils.ZERO && grantResults[ConstantUtils.ZERO] == PackageManager.PERMISSION_GRANTED) {
+                    presenter.setLocationObject();
+                } else {
+                    presenter.checkLocationPermission();
+                }
+            }
+        }
     }
 }
