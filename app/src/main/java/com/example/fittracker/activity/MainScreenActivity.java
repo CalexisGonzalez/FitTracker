@@ -12,6 +12,8 @@ import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
 import com.example.fittracker.mvp.presenter.MainScreenPresenter;
 import com.example.fittracker.mvp.view.MainScreenView;
+import com.example.fittracker.services.WeatherGenerator;
+import com.example.fittracker.services.WeatherService;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,7 +31,8 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void init() {
-        presenter = new MainScreenPresenter(new MainScreenView(this), new MainScreenModel());
+        presenter = new MainScreenPresenter(new MainScreenView(this),
+                new MainScreenModel(WeatherGenerator.createService(WeatherService.class)));
     }
 
     @OnClick(R.id.mainscreen_activity_button_settings)
@@ -49,15 +52,6 @@ public class MainScreenActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case ConstantUtils
-                    .LOCATION_REQUEST_CODE: {
-                if (grantResults.length > ConstantUtils.ZERO && grantResults[ConstantUtils.ZERO] == PackageManager.PERMISSION_GRANTED) {
-                    presenter.setLocationObject();
-                } else {
-                    presenter.checkLocationPermission();
-                }
-            }
-        }
+        presenter.onRequestPermissionResult(requestCode,permissions,grantResults);
     }
 }

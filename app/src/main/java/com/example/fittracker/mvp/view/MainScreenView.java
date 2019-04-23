@@ -8,7 +8,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,6 @@ import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.activity.UserSettingsActivity;
 import com.example.fittracker.mvp.contract.MainScreenContract;
-import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 
@@ -30,6 +31,9 @@ public class MainScreenView implements MainScreenContract.View {
     @BindView(R.id.mainscreen_cardview_icon)
     ImageView weatherIconView;
     @BindView(R.id.mainscreen_cardview_weather_status) TextView weatherStatusView;
+    @BindView(R.id.mainscreen_cardview_progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.mainscreen_cardview_icon_progressBar) ProgressBar iconProgressBar;
 
     public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
@@ -93,13 +97,23 @@ public class MainScreenView implements MainScreenContract.View {
     }
 
     @Override
-    public void setIconView(String url) {
-        Picasso.get().load(ConstantUtils.WEATHER_ICON_URL + url + ConstantUtils.PNG_EXTENSION).
-                resize(ConstantUtils.WEATHER_ICON_DIMENSION, ConstantUtils.WEATHER_ICON_DIMENSION).into(weatherIconView);
+    public void setWeatherMainView(String weatherMain) {
+        weatherStatusView.setText(weatherMain);
     }
 
     @Override
-    public void setWeatherMainView(String weatherMain) {
-        weatherStatusView.setText(weatherMain);
+    public void onWeatherDataGet() {
+        progressBar.setVisibility(View.GONE);
+        iconProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public ImageView getWeatherIconView() {
+        return weatherIconView;
+    }
+
+    @Override
+    public void hideWeatherIconProgressBar() {
+        iconProgressBar.setVisibility(View.GONE);
     }
 }

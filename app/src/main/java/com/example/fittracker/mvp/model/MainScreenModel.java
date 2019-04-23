@@ -3,13 +3,17 @@ package com.example.fittracker.mvp.model;
 import android.location.Location;
 
 import com.example.fittracker.mvp.contract.MainScreenContract;
+import com.example.fittracker.services.WeatherPojo;
 import com.example.fittracker.services.WeatherService;
+
+import retrofit2.Call;
 
 public class MainScreenModel implements MainScreenContract.Model {
     private Location location;
     private WeatherService service;
 
-    public MainScreenModel() {
+    public MainScreenModel(WeatherService service) {
+        this.service = service;
     }
 
     @Override
@@ -17,10 +21,6 @@ public class MainScreenModel implements MainScreenContract.Model {
         this.location = location;
     }
 
-    @Override
-    public void setWeatherService(WeatherService service) {
-        this.service = service;
-    }
 
     @Override
     public double getLatitud() {
@@ -35,5 +35,10 @@ public class MainScreenModel implements MainScreenContract.Model {
     @Override
     public WeatherService getService() {
         return service;
+    }
+
+    @Override
+    public Call<WeatherPojo> getWeatherDataFromService(double lat, double lon, String appid, String units) {
+        return getService().getData(lat, lon, appid, units);
     }
 }

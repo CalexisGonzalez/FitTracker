@@ -1,13 +1,15 @@
 package com.example.fittracker.mvp.presenter;
 
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 
+import com.example.fittracker.BuildConfig;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.mvp.contract.MainScreenContract;
-import com.example.fittracker.services.WeatherGenerator;
 import com.example.fittracker.services.WeatherPojo;
-import com.example.fittracker.services.WeatherService;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,16 +61,16 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     public void init() {
         locationManager = view.getLocationManager();
         checkLocationPermission();
-        model.setWeatherService(WeatherGenerator.createService(WeatherService.class));
-        call = model.getService().getData(model.getLatitud(), model.getLongitude(),
-                ConstantUtils.WEATHER_API_KEY, ConstantUtils.WEATHER_UNITS);
+        call = model.getWeatherDataFromService(model.getLatitud(), model.getLongitude(),
+                BuildConfig.weather_api_key, ConstantUtils.WEATHER_UNITS);
         call.enqueue(new Callback<WeatherPojo>() {
             @Override
             public void onResponse(Call<WeatherPojo> call, Response<WeatherPojo> response) {
+                view.onWeatherDataGet();
                 weatherData = response.body();
                 view.setCityView(weatherData.getName());
                 view.setTemperatureView(weatherData.getMain().getTemp());
-                view.setIconView(weatherData.getWeather().get(ConstantUtils.ZERO).getIcon());
+                setWeatherIcon(weatherData.getWeather().get(ConstantUtils.ZERO).getIcon());
                 view.setWeatherMainView(weatherData.getWeather().get(ConstantUtils.ZERO).getMain());
             }
 
@@ -77,6 +79,37 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 view.fetchingError();
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case ConstantUtils
+                    .LOCATION_REQUEST_CODE: {
+                if (grantResults.length > ConstantUtils.ZERO && grantResults[ConstantUtils.ZERO] == PackageManager.PERMISSION_GRANTED) {
+                    setLocationObject();
+                } else {
+                    checkLocationPermission();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void setWeatherIcon(String url) {
+        Picasso.get().load(BuildConfig.weather_icon_url + url + ConstantUtils.PNG_EXTENSION).
+                resize(ConstantUtils.WEATHER_ICON_DIMENSION, ConstantUtils.WEATHER_ICON_DIMENSION).
+                into(view.getWeatherIconView(), new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+                        view.hideWeatherIconProgressBar();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
     }
 }
 

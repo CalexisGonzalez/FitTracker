@@ -27,9 +27,10 @@
     <dimen name="imagebutton_width">50dp</dimen>
     <dimen name="text_font_size">15sp</dimen>
     <dimen name="mainscreen_cardview_margin_top">15dp</dimen>
-    <dimen name="mainscreen_cardview_margin_start">55dp</dimen>
+    <dimen name="mainscreen_cardview_margin_start">50dp</dimen>
     <dimen name="mainscreen_cardview_xmargin_first">10dp</dimen>
     <dimen name="mainscreen_cardview_xmargin_second">100dp</dimen>
     <dimen name="mainscreen_cardview_ymargin_first">10dp</dimen>
     <dimen name="mainscreen_cardview_ymargin_second">75dp</dimen>
+    <dimen name="mainscreen_cardview_icon_progressbar">30dp</dimen>
 </resources>
