@@ -83,23 +83,20 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     @Override
     public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case ConstantUtils
-                    .LOCATION_REQUEST_CODE: {
-                if (grantResults.length > ConstantUtils.ZERO && grantResults[ConstantUtils.ZERO] == PackageManager.PERMISSION_GRANTED) {
-                    setLocationObject();
-                } else {
-                    checkLocationPermission();
-                }
-            }
+        if (grantResults.length > ConstantUtils.ZERO
+                && grantResults[ConstantUtils.ZERO] == PackageManager.PERMISSION_GRANTED
+                && requestCode == ConstantUtils.LOCATION_REQUEST_CODE) {
+            setLocationObject();
+        } else {
+            checkLocationPermission();
         }
     }
 
     @Override
     public void setWeatherIcon(String url) {
-        Picasso.get().load(BuildConfig.weather_icon_url + url + ConstantUtils.PNG_EXTENSION).
-                resize(ConstantUtils.WEATHER_ICON_DIMENSION, ConstantUtils.WEATHER_ICON_DIMENSION).
-                into(view.getWeatherIconView(), new com.squareup.picasso.Callback() {
+        Picasso.get().load(BuildConfig.weather_icon_url + url + ConstantUtils.PNG_EXTENSION)
+                .resize(ConstantUtils.WEATHER_ICON_DIMENSION, ConstantUtils.WEATHER_ICON_DIMENSION)
+                .into(view.getWeatherIconView(), new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
                         view.hideWeatherIconProgressBar();
