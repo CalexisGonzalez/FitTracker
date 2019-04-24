@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
 
 public class MainScreenView implements MainScreenContract.View {
     private WeakReference<Activity> activity;
-    private boolean isWeatherCardExpanded;
     @BindView(R.id.mainscreen_cardview_city) TextView cityView;
     @BindView(R.id.mainscreen_cardview_temperature) TextView temperatureView;
     @BindView(R.id.mainscreen_cardview_icon)
@@ -43,7 +42,6 @@ public class MainScreenView implements MainScreenContract.View {
     public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
         ButterKnife.bind(this, activity);
-        isWeatherCardExpanded = false;
     }
 
     @Override
@@ -129,7 +127,6 @@ public class MainScreenView implements MainScreenContract.View {
         humidityView.setVisibility(View.VISIBLE);
         pressureTag.setVisibility(View.VISIBLE);
         pressureView.setVisibility(View.VISIBLE);
-        isWeatherCardExpanded = !isWeatherCardExpanded;
     }
 
     @Override
@@ -138,12 +135,15 @@ public class MainScreenView implements MainScreenContract.View {
         humidityView.setVisibility(View.GONE);
         pressureTag.setVisibility(View.GONE);
         pressureView.setVisibility(View.GONE);
-        isWeatherCardExpanded = !isWeatherCardExpanded;
     }
 
     @Override
     public boolean isWeatherCardExpanded() {
-        return isWeatherCardExpanded;
+        if (humidityView.getVisibility() == View.GONE) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
