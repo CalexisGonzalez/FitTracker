@@ -18,5 +18,11 @@ public class ConstantUtils {
     public static final String SENDMAIL_LOG = "SendMail";
     public static final String DATAHANDLER_TYPE = "text/plain";
     public static final Character COMA = ',';
-    public static final String MAIL_HOST = "smtp.gmail.com";
+    public static final int LOCATION_REQUEST_CODE = 1;
+    public static final String MARVEL_API_KEY_PUBLIC = "08cd7f2cd10462f4d20ab91d76ecec33";
+    public static final String MARVEL_API_KEY_PRIVATE = "82460263f65b53b64520b5a4fc43754a77cc1d85";
+    public static final String WEATHER_UNITS = "metric";
+    public static final String PNG_EXTENSION = ".png";
+    public static final String CELSIUS_EXTENSIONS = "ºC";
+    public static final int WEATHER_ICON_DIMENSION = 100;
 }

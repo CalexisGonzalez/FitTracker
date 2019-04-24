@@ -1,19 +1,26 @@
 package com.example.fittracker.activity;
 
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
 import com.example.fittracker.mvp.presenter.MainScreenPresenter;
 import com.example.fittracker.mvp.view.MainScreenView;
+import com.example.fittracker.services.WeatherGenerator;
+import com.example.fittracker.services.WeatherService;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainScreenActivity extends AppCompatActivity {
     private MainScreenContract.Presenter presenter;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,8 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void init() {
-        presenter = new MainScreenPresenter(new MainScreenView(this), new MainScreenModel());
+        presenter = new MainScreenPresenter(new MainScreenView(this),
+                new MainScreenModel(WeatherGenerator.createService(WeatherService.class)));
     }
 
     @OnClick(R.id.mainscreen_activity_button_settings)
@@ -40,5 +48,10 @@ public class MainScreenActivity extends AppCompatActivity {
     @OnClick(R.id.main_screen_button_log_out)
     public void onLogOutPressed() {
         presenter.onLogOutPressed();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        presenter.onRequestPermissionResult(requestCode,permissions,grantResults);
     }
 }

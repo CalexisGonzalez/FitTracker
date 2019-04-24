@@ -23,4 +23,5 @@
     <string name="btn_logout">Log Out</string>
     <string name="btn_email_information">Mail your user information</string>
     <string name="error_send_mail">An error occured while trying to send the mail</string>
+    <string name="error_fetching_api_data">An error occured while contacting the server</string>
 </resources>
