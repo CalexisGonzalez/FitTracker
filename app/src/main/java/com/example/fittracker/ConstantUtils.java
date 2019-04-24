@@ -25,4 +25,6 @@ public class ConstantUtils {
     public static final String PNG_EXTENSION = ".png";
     public static final String CELSIUS_EXTENSIONS = "ºC";
     public static final int WEATHER_ICON_DIMENSION = 100;
+    public static final String PERCENT = "%";
+    public static final String PASCALS = "HPa";
 }

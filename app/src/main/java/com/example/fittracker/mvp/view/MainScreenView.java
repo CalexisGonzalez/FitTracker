@@ -26,7 +26,8 @@ import butterknife.ButterKnife;
 
 public class MainScreenView implements MainScreenContract.View {
     private WeakReference<Activity> activity;
-    @BindView(R.id.mainscreen_cadview_city) TextView cityView;
+    private boolean isWeatherCardExpanded;
+    @BindView(R.id.mainscreen_cardview_city) TextView cityView;
     @BindView(R.id.mainscreen_cardview_temperature) TextView temperatureView;
     @BindView(R.id.mainscreen_cardview_icon)
     ImageView weatherIconView;
@@ -34,10 +35,15 @@ public class MainScreenView implements MainScreenContract.View {
     @BindView(R.id.mainscreen_cardview_progressBar)
     ProgressBar progressBar;
     @BindView(R.id.mainscreen_cardview_icon_progressBar) ProgressBar iconProgressBar;
+    @BindView(R.id.mainscreen_cardview_weather_humidity_tag) TextView humidityTag;
+    @BindView(R.id.mainscreen_cardview_weather_humidity) TextView humidityView;
+    @BindView(R.id.mainscreen_cardview_weather_pressure_tag) TextView pressureTag;
+    @BindView(R.id.mainscreen_cardview_weather_pressure) TextView pressureView;
 
     public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
         ButterKnife.bind(this, activity);
+        isWeatherCardExpanded = false;
     }
 
     @Override
@@ -115,5 +121,38 @@ public class MainScreenView implements MainScreenContract.View {
     @Override
     public void hideWeatherIconProgressBar() {
         iconProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void expandWeatherCard() {
+        humidityTag.setVisibility(View.VISIBLE);
+        humidityView.setVisibility(View.VISIBLE);
+        pressureTag.setVisibility(View.VISIBLE);
+        pressureView.setVisibility(View.VISIBLE);
+        isWeatherCardExpanded = !isWeatherCardExpanded;
+    }
+
+    @Override
+    public void contractWeatherCard() {
+        humidityTag.setVisibility(View.GONE);
+        humidityView.setVisibility(View.GONE);
+        pressureTag.setVisibility(View.GONE);
+        pressureView.setVisibility(View.GONE);
+        isWeatherCardExpanded = !isWeatherCardExpanded;
+    }
+
+    @Override
+    public boolean isWeatherCardExpanded() {
+        return isWeatherCardExpanded;
+    }
+
+    @Override
+    public void setHumidityView(Double humidity) {
+        humidityView.setText(humidity.toString() + ConstantUtils.PERCENT);
+    }
+
+    @Override
+    public void setPressureView(Double pressure) {
+        pressureView.setText(pressure.toString() + ConstantUtils.PASCALS);
     }
 }

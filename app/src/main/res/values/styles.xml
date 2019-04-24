@@ -22,6 +22,11 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 
+    <style name="WeatherCard" parent= "CardView.Dark">
+        <item name="cardElevation">@dimen/mainscreen_cardview_elevation</item>
+        <item name="cardBackgroundColor">@color/colorCardBackground</item>
+    </style>
+
     <style name="ButtonTheme" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/my_button_bg</item>
         <item name="android:fontFamily">@font/opensans_regular</item>

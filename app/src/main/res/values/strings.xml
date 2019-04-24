@@ -24,4 +24,6 @@
     <string name="btn_email_information">Mail your user information</string>
     <string name="error_send_mail">An error occured while trying to send the mail</string>
     <string name="error_fetching_api_data">An error occured while contacting the server</string>
+    <string name="humidity_tag">Humidity:</string>
+    <string name="pressure_tag">Pressure:</string>
 </resources>

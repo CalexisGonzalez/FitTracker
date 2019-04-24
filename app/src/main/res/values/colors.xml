@@ -8,4 +8,5 @@
     <color name="colorButton">#8aacc8</color>
     <color name="colorButtonPressed">#5d99c6</color>
     <color name="colorBackground">#eeffff</color>
+    <color name="colorCardBackground">#B2EBF2</color>
 </resources>
