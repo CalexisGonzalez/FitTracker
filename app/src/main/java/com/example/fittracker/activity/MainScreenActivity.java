@@ -1,12 +1,10 @@
 package com.example.fittracker.activity;
 
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
@@ -52,6 +50,11 @@ public class MainScreenActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        presenter.onRequestPermissionResult(requestCode,permissions,grantResults);
+        presenter.onRequestPermissionResult(requestCode, permissions, grantResults);
+    }
+
+    @OnClick(R.id.mainscreen_cardview)
+    public void onWeatherCardPressed() {
+        presenter.onWeatherCardPressed();
     }
 }

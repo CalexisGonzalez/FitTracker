@@ -72,6 +72,8 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 view.setTemperatureView(weatherData.getMain().getTemp());
                 setWeatherIcon(weatherData.getWeather().get(ConstantUtils.ZERO).getIcon());
                 view.setWeatherMainView(weatherData.getWeather().get(ConstantUtils.ZERO).getMain());
+                view.setHumidityView(weatherData.getMain().getHumidity());
+                view.setPressureView(weatherData.getMain().getPressure());
             }
 
             @Override
@@ -107,6 +109,15 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
                     }
                 });
+    }
+
+    @Override
+    public void onWeatherCardPressed() {
+        if (view.isWeatherCardExpanded()){
+            view.contractWeatherCard();
+        }else{
+            view.expandWeatherCard();
+        }
     }
 }
 

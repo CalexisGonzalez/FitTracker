@@ -25,6 +25,8 @@ public interface MainScreenContract {
         void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults);
 
         void setWeatherIcon(String url);
+
+        void onWeatherCardPressed();
     }
 
     interface Model {
@@ -65,5 +67,15 @@ public interface MainScreenContract {
         void onWeatherDataGet();
 
         ImageView getWeatherIconView();
+
+        void expandWeatherCard();
+
+        void contractWeatherCard();
+
+        boolean isWeatherCardExpanded();
+
+        void setHumidityView(Double humidity);
+
+        void setPressureView(Double pressure);
     }
 }
