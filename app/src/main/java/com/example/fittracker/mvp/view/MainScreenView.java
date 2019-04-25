@@ -139,11 +139,7 @@ public class MainScreenView implements MainScreenContract.View {
 
     @Override
     public boolean isWeatherCardExpanded() {
-        if (humidityView.getVisibility() == View.GONE) {
-            return false;
-        } else {
-            return true;
-        }
+       return humidityView.getVisibility() != View.GONE;
     }
 
     @Override
