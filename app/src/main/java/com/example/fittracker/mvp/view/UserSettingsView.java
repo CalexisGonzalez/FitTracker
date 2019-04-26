@@ -1,6 +1,7 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
 import android.widget.CheckBox;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.GMailSender;
 import com.example.fittracker.R;
+import com.example.fittracker.activity.AvatarListActivity;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
 
 import java.lang.ref.WeakReference;
@@ -141,5 +143,11 @@ public class UserSettingsView implements UserSettingsContract.View {
             }
 
         }).start();
+    }
+
+    @Override
+    public void onChangeAvatarClicked() {
+        Intent intent = new Intent(activity.get(), AvatarListActivity.class);
+        activity.get().startActivity(intent);
     }
 }

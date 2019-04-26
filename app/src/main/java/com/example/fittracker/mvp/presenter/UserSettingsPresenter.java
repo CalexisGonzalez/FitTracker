@@ -95,4 +95,9 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+    @Override
+    public void onChangeAvatarClicked() {
+        view.onChangeAvatarClicked();
+    }
 }

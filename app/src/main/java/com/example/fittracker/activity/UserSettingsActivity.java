@@ -61,4 +61,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     public void onCancelClicked() {
         presenter.onCancelClick();
     }
+
+    @OnClick(R.id.usersettings_activity_button_change_avatar)
+    public void onChangeAvatarClicked(){presenter.onChangeAvatarClicked();}
 }

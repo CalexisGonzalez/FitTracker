@@ -5,8 +5,8 @@ import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import com.example.fittracker.services.WeatherPojo;
-import com.example.fittracker.services.WeatherService;
+import com.example.fittracker.services.weather.WeatherPojo;
+import com.example.fittracker.services.weather.WeatherService;
 
 import retrofit2.Call;
 

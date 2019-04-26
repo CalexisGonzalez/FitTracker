@@ -14,6 +14,11 @@ android {
         buildConfigField "String", "mail_host", "\"smtp.gmail.com\""
         buildConfigField "String", "weather_api_key", "\"852c6dcc0bd878109bd0fc7bb1566c3e\""
         buildConfigField "String", "weather_icon_url", "\"https://openweathermap.org/img/w/\""
+        buildConfigField "String", "marvel_api_key_public", "\"08cd7f2cd10462f4d20ab91d76ecec33\""
+        buildConfigField "String", "marvel_api_key_private", "\"82460263f65b53b64520b5a4fc43754a77cc1d85\""
+        buildConfigField "String", "marvel_base_url", "\"http://gateway.marvel.com\""
+        buildConfigField "String", "marvel_hash", "\"77284265963542412b3b653d401e6dcd\""
+        buildConfigField "int", "marvel_timestamp", "1"
 
     }
     buildTypes {
@@ -49,4 +54,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.support:design:28.0.0'
 }

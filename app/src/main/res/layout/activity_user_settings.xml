@@ -1,120 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/signup_activity_layout_vertical_margin">
+    android:layout_height="match_parent">
 
-    <TableRow
+    <TableLayout
+        android:id="@+id/usersettings_activity_tablelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+        android:layout_marginTop="@dimen/signup_activity_layout_vertical_margin">
 
-        <TextView
-            android:id="@+id/usersettings_activity_et_mail"
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/title_email" />
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
 
-        <EditText
-            android:id="@+id/usersettings_activity_edittext_email"
+            <TextView
+                android:id="@+id/usersettings_activity_et_mail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/title_email" />
+
+            <EditText
+                android:id="@+id/usersettings_activity_edittext_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:visibility="visible" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/usersettings_activity_et_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_pass" />
+
+            <EditText
+                android:id="@+id/usersettings_activity_edittext_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:visibility="visible" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/usersettings_activity_et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_name" />
+
+            <EditText
+                android:id="@+id/usersettings_activity_edittext_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:visibility="visible" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/usersettings_activity_et_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_surname" />
+
+            <EditText
+                android:id="@+id/usersettings_activity_edittext_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:visibility="visible" />
+        </TableRow>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none"
-            android:visibility="visible" />
-    </TableRow>
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
+            android:orientation="horizontal">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
+            <Button
+                android:id="@+id/usersettings_activity_button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_cancel" />
 
-        <TextView
-            android:id="@+id/usersettings_activity_et_pass"
+            <Button
+                android:id="@+id/usersettings_activity_button_apply_changes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_apply_changes" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/usersettings_activity_chckbox_sendmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_pass" />
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
+            android:text="@string/btn_email_information" />
+    </TableLayout>
 
-        <EditText
-            android:id="@+id/usersettings_activity_edittext_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none"
-            android:visibility="visible" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
-
-        <TextView
-            android:id="@+id/usersettings_activity_et_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_name" />
-
-        <EditText
-            android:id="@+id/usersettings_activity_edittext_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none"
-            android:visibility="visible" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin">
-
-        <TextView
-            android:id="@+id/usersettings_activity_et_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_surname" />
-
-        <EditText
-            android:id="@+id/usersettings_activity_edittext_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none"
-            android:visibility="visible" />
-    </TableRow>
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/usersettings_activity_avatar_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
-        android:orientation="horizontal">
+        android:layout_centerHorizontal="true" />
 
-        <Button
-            android:id="@+id/usersettings_activity_button_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/btn_cancel" />
-
-        <Button
-            android:id="@+id/usersettings_activity_button_apply_changes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/btn_apply_changes" />
-    </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/usersettings_activity_chckbox_sendmail"
+    <Button
+        android:id="@+id/usersettings_activity_button_change_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
-        android:text="@string/btn_email_information" />
-</TableLayout>
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="@dimen/signup_activity_vertical_margin"
+        android:layout_toRightOf="@+id/usersettings_activity_avatar_imageview"
+        android:text="Change avatar" />
+</RelativeLayout>

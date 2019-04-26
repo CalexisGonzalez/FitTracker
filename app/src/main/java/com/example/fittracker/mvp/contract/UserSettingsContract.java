@@ -50,6 +50,8 @@ public interface UserSettingsContract {
         public void printInvalidEmail();
 
         public boolean checkBoxMailPressed();
+
+        public void onChangeAvatarClicked();
     }
 
     interface Presenter {
@@ -68,5 +70,7 @@ public interface UserSettingsContract {
         public void init();
 
         public void onSendMailPressed();
+
+        public void onChangeAvatarClicked();
     }
 }

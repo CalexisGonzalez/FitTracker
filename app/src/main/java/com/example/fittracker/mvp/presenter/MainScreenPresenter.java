@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import com.example.fittracker.BuildConfig;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.mvp.contract.MainScreenContract;
-import com.example.fittracker.services.WeatherPojo;
+import com.example.fittracker.services.weather.WeatherPojo;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
