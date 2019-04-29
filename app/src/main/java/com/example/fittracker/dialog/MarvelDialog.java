@@ -27,8 +27,6 @@ public class MarvelDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_avatar_image);
         ButterKnife.bind(this);
-        setTitle(null);
-        setCancelable(false);
         presenter = new MarvelDialogPresenter(new MarvelDialogModel(imageUrl), new MarvelDialogView(this));
     }
 

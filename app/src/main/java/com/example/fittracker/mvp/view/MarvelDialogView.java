@@ -24,6 +24,8 @@ public class MarvelDialogView implements MarvelDialogContract.View {
     public MarvelDialogView(Dialog dialog) {
         this.dialog = new WeakReference<>(dialog);
         ButterKnife.bind(this, dialog);
+        this.dialog.get().setTitle(null);
+        this.dialog.get().setCancelable(false);
     }
 
     @Override
