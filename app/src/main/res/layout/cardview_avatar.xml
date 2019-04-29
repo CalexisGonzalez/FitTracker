@@ -22,7 +22,6 @@
                 android:layout_centerVertical="true"
                 android:paddingEnd="@dimen/avatar_recyclerview_padding">
 
-
                 <ProgressBar
                     android:id="@+id/avatar_recyclerview_progressBar"
                     style="?android:attr/progressBarStyleSmall"
@@ -38,7 +37,6 @@
                     android:layout_height="wrap_content" />
 
             </RelativeLayout>
-
 
             <TextView
                 android:id="@+id/avatar_recyclerview_textview"

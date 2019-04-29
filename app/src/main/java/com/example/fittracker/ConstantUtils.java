@@ -28,4 +28,5 @@ public class ConstantUtils {
     public static final int MARVEL_API_LIMIT = 10;
     public static final int MARVEL_IMAGE_SMALL_DIMENSION = 200;
     public static final int MARVEL_IMAGE_LARGE_DIMENSION = 400;
+    public static final String DOT = ".";
 }

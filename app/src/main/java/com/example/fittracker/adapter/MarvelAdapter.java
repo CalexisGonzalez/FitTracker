@@ -39,7 +39,7 @@ public class MarvelAdapter extends RecyclerView.Adapter<MarvelAdapter.PhotoViewH
     @Override
     public void onBindViewHolder(final PhotoViewHolder viewHolder, int position) {
         final Result imageInfo = items.get(position);
-        String imageUrl = imageInfo.getThumbnail().getPath() + "." + imageInfo.getThumbnail().getExtension();
+        String imageUrl = imageInfo.getThumbnail().getPath() + ConstantUtils.DOT + imageInfo.getThumbnail().getExtension();
         viewHolder.imageUrl = imageUrl;
         viewHolder.id.setText(String.valueOf(imageInfo.getName()));
         Picasso.get().load(imageUrl).resize(ConstantUtils.MARVEL_IMAGE_SMALL_DIMENSION,

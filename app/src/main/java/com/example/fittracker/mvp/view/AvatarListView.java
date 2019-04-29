@@ -27,6 +27,10 @@ public class AvatarListView implements AvatarListContract.View {
     public AvatarListView(Activity activity) {
         this.activity = new WeakReference<>(activity);
         ButterKnife.bind(this, activity);
+        init();
+    }
+
+    public void init(){
         recyclerView.setAdapter(new MarvelAdapter(new ArrayList<Result>()));
         LinearLayoutManager llm = new LinearLayoutManager(this.activity.get());
         recyclerView.setLayoutManager(llm);
