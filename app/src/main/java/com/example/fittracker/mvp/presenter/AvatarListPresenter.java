@@ -6,6 +6,7 @@ import com.example.fittracker.adapter.MarvelAdapter;
 import com.example.fittracker.mvp.contract.AvatarListContract;
 import com.example.fittracker.services.marvel.MarvelPojo;
 import com.example.fittracker.services.marvel.Result;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class AvatarListPresenter implements AvatarListContract.Presenter {
     }
 
     public void init() {
-        call = model.getMarvelDataFromService(ConstantUtils.MARVEL_API_LIMIT, BuildConfig.marvel_api_key_public,
-                BuildConfig.marvel_timestamp, BuildConfig.marvel_hash);
+        call = model.getMarvelDataFromService(ConstantUtils.MARVEL_API_LIMIT, BuildConfig.MARVEL_API_KEY_PUBLIC,
+                BuildConfig.MARVEL_TIMESTAMP, BuildConfig.MARVEL_HASH);
         call.enqueue(new Callback<MarvelPojo>() {
             @Override
             public void onResponse(Call<MarvelPojo> call, Response<MarvelPojo> response) {
@@ -42,8 +43,13 @@ public class AvatarListPresenter implements AvatarListContract.Presenter {
 
             @Override
             public void onFailure(Call<MarvelPojo> call, Throwable t) {
-                return;
+                view.onQueryError();
             }
         });
+    }
+
+    @Subscribe
+    public void onImageError(Exception e) {
+        view.onImageError();
     }
 }

@@ -3,17 +3,25 @@ package com.example.fittracker.mvp.contract;
 import android.widget.ImageView;
 
 public interface MarvelDialogContract {
-    interface Presenter{
+    interface Presenter {
         public void onApplyPressed();
+
         public void onCancelPressed();
     }
-    interface Model{
+
+    interface Model {
         public String getImageUrl();
     }
-    interface View{
+
+    interface View {
         public void onApplyPressed();
+
         public void onCancelPressed();
+
         public ImageView getImageView();
+
         public void hideProgressBar();
+
+        public void onImageError();
     }
 }

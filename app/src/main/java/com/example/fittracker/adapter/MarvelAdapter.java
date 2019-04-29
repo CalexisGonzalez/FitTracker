@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.fittracker.BusProvider;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.dialog.MarvelDialog;
 import com.example.fittracker.services.marvel.Result;
+import com.squareup.otto.Bus;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -24,9 +26,11 @@ import butterknife.OnClick;
 public class MarvelAdapter extends RecyclerView.Adapter<MarvelAdapter.PhotoViewHolder> {
 
     private List<Result> items;
+    private Bus bus;
 
     public MarvelAdapter(List<Result> items) {
         this.items = items;
+        bus = BusProvider.getInstance();
     }
 
     @Override
@@ -53,7 +57,7 @@ public class MarvelAdapter extends RecyclerView.Adapter<MarvelAdapter.PhotoViewH
 
             @Override
             public void onError(Exception e) {
-
+                bus.post(e);
             }
         });
     }

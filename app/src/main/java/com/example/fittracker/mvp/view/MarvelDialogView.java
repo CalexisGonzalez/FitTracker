@@ -48,4 +48,9 @@ public class MarvelDialogView implements MarvelDialogContract.View {
     public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onImageError() {
+        Toast.makeText(dialog.get().getContext(), R.string.error_fetching_image, Toast.LENGTH_SHORT).show();
+    }
 }

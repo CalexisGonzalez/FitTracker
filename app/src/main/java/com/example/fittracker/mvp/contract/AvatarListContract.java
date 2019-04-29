@@ -18,5 +18,9 @@ public interface AvatarListContract {
         void onBackPressed();
 
         void setAdapter(MarvelAdapter adapter);
+
+        void onImageError();
+
+        void onQueryError();
     }
 }

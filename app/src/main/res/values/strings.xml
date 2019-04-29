@@ -26,4 +26,5 @@
     <string name="error_fetching_api_data">An error occured while contacting the server</string>
     <string name="humidity_tag">Humidity:</string>
     <string name="pressure_tag">Pressure:</string>
+    <string name="error_fetching_image">An error occured while fetching the image</string>
 </resources>

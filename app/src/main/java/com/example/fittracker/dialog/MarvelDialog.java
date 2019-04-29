@@ -31,8 +31,12 @@ public class MarvelDialog extends Dialog {
     }
 
     @OnClick(R.id.dialog_avatar_button_apply)
-    public void onApplyPressed(){ presenter.onApplyPressed();}
+    public void onApplyPressed() {
+        presenter.onApplyPressed();
+    }
 
     @OnClick(R.id.dialog_avatar_button_cancel)
-    public void onCancelPressed(){ presenter.onCancelPressed();}
+    public void onCancelPressed() {
+        presenter.onCancelPressed();
+    }
 }

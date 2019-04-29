@@ -62,7 +62,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
         locationManager = view.getLocationManager();
         checkLocationPermission();
         call = model.getWeatherDataFromService(model.getLatitud(), model.getLongitude(),
-                BuildConfig.weather_api_key, ConstantUtils.WEATHER_UNITS);
+                BuildConfig.WEATHER_API_KEY, ConstantUtils.WEATHER_UNITS);
         call.enqueue(new Callback<WeatherPojo>() {
             @Override
             public void onResponse(Call<WeatherPojo> call, Response<WeatherPojo> response) {
@@ -96,7 +96,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     @Override
     public void setWeatherIcon(String url) {
-        Picasso.get().load(BuildConfig.weather_icon_url + url + ConstantUtils.PNG_EXTENSION)
+        Picasso.get().load(BuildConfig.WEATHER_ICON_URL + url + ConstantUtils.PNG_EXTENSION)
                 .resize(ConstantUtils.WEATHER_ICON_DIMENSION, ConstantUtils.WEATHER_ICON_DIMENSION)
                 .into(view.getWeatherIconView(), new com.squareup.picasso.Callback() {
                     @Override
@@ -113,9 +113,9 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     @Override
     public void onWeatherCardPressed() {
-        if (view.isWeatherCardExpanded()){
+        if (view.isWeatherCardExpanded()) {
             view.contractWeatherCard();
-        }else{
+        } else {
             view.expandWeatherCard();
         }
     }

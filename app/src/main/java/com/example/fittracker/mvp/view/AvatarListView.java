@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.fittracker.R;
 import com.example.fittracker.adapter.MarvelAdapter;
@@ -30,7 +31,7 @@ public class AvatarListView implements AvatarListContract.View {
         init();
     }
 
-    public void init(){
+    public void init() {
         recyclerView.setAdapter(new MarvelAdapter(new ArrayList<Result>()));
         LinearLayoutManager llm = new LinearLayoutManager(this.activity.get());
         recyclerView.setLayoutManager(llm);
@@ -46,5 +47,15 @@ public class AvatarListView implements AvatarListContract.View {
         progressBar.setVisibility(View.GONE);
         recyclerView.setAdapter(adapter);
         recyclerView.invalidate();
+    }
+
+    @Override
+    public void onImageError() {
+        Toast.makeText(activity.get(), R.string.error_fetching_image, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onQueryError() {
+        Toast.makeText(activity.get(), R.string.error_fetching_api_data, Toast.LENGTH_SHORT).show();
     }
 }

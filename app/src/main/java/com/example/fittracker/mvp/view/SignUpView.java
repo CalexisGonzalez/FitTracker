@@ -64,7 +64,7 @@ public class SignUpView implements SignUpContract.View {
 
     @Override
     public void passwordRepMatchError() {
-        Toast.makeText(activity.get(),R.string.error_passwordrep_badmatch, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.get(), R.string.error_passwordrep_badmatch, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -84,11 +84,11 @@ public class SignUpView implements SignUpContract.View {
 
     @Override
     public void emailFormatError() {
-        Toast.makeText(activity.get(),R.string.error_emailformat ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.get(), R.string.error_emailformat, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onSendMailPressed(final GMailSender sender,final String subject,final String body, final String recipient) {
+    public void onSendMailPressed(final GMailSender sender, final String subject, final String body, final String recipient) {
         new Thread(new Runnable() {
 
             @Override

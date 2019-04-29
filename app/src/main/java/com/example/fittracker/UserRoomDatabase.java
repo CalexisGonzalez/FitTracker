@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {User.class}, version = BuildConfig.db_version)
+@Database(entities = {User.class}, version = BuildConfig.DB_VERSION)
 public abstract class UserRoomDatabase extends RoomDatabase {
     private static volatile UserRoomDatabase INSTANCE;
 

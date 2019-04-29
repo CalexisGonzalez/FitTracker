@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fittracker.BusProvider;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.AvatarListContract;
 import com.example.fittracker.mvp.model.AvatarListModel;
@@ -35,5 +36,17 @@ public class AvatarListActivity extends AppCompatActivity {
     @OnClick(R.id.avatarlist_button_back)
     public void onBackPressed() {
         presenter.onBackPressed();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        BusProvider.register(presenter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        BusProvider.unregister(presenter);
     }
 }
