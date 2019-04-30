@@ -37,7 +37,7 @@ public class MarvelDialogPresenter implements MarvelDialogContract.Presenter {
 
             @Override
             public void onError(Exception e) {
-
+                view.onImageError();
             }
         });
     }
