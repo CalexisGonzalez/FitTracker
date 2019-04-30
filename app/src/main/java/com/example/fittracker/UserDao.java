@@ -28,4 +28,10 @@ public interface UserDao {
 
     @Query("SELECT id FROM user_table WHERE mail == :userEmail")
     public Integer fetchUserId(String userEmail);
+
+    @Query("SELECT imageUrl FROM user_table WHERE id == :userId")
+    public String fetchImageUrl(int userId);
+
+    @Query("UPDATE user_table SET imageUrl = :imageUrl WHERE id == :userId")
+    public void updateImageUrl(int userId, String imageUrl);
 }

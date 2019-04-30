@@ -11,6 +11,10 @@ public interface MarvelDialogContract {
 
     interface Model {
         public String getImageUrl();
+
+        public int getUserId();
+
+        public void updateImageUrl(int userId, String imageUrl);
     }
 
     interface View {

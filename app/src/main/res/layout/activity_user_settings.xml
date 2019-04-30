@@ -115,29 +115,33 @@
                 android:text="@string/btn_apply_changes" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/usersettings_activity_button_change_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
+            android:text="@string/btn_change_avatar" />
+
         <CheckBox
             android:id="@+id/usersettings_activity_chckbox_sendmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/signup_activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/signup_activity_vertical_margin"
             android:text="@string/btn_email_information" />
+
     </TableLayout>
 
     <ImageView
         android:id="@+id/usersettings_activity_avatar_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/avatar_image_background"/>
 
-    <Button
-        android:id="@+id/usersettings_activity_button_change_avatar"
+    <ProgressBar
+        android:id="@+id/usersettings_activity_avatar_progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="@dimen/signup_activity_vertical_margin"
-        android:layout_toRightOf="@+id/usersettings_activity_avatar_imageview"
-        android:text="Change avatar" />
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

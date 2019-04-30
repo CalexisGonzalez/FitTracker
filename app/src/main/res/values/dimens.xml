@@ -38,4 +38,5 @@
     <dimen name="avatar_recyclerview_padding">16dp</dimen>
     <dimen name="avatar_recyclerview_progressbar">150dp</dimen>
     <dimen name="avatar_dialog_height">300dp</dimen>
+    <dimen name="imageview_background_padding">2dp</dimen>
 </resources>

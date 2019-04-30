@@ -25,6 +25,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.loadIconView();
+    }
+
     public void init() {
         presenter = new UserSettingsPresenter(new UserSettingsView(this),
                 new UserSettingsModel(UserRoomDatabase.getDatabase(this),
@@ -63,5 +69,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.usersettings_activity_button_change_avatar)
-    public void onChangeAvatarClicked(){presenter.onChangeAvatarClicked();}
+    public void onChangeAvatarClicked() {
+        presenter.onChangeAvatarClicked();
+    }
 }

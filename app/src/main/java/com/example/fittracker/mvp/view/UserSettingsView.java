@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.InputType;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fittracker.ConstantUtils;
@@ -26,6 +29,10 @@ public class UserSettingsView implements UserSettingsContract.View {
     @BindView(R.id.usersettings_activity_edittext_password) EditText passwordEdit;
     @BindView(R.id.usersettings_activity_chckbox_sendmail)
     CheckBox mailBox;
+    @BindView(R.id.usersettings_activity_avatar_imageview)
+    ImageView avatarImageView;
+    @BindView(R.id.usersettings_activity_avatar_progressbar)
+    ProgressBar avatarImageProgressbar;
     private WeakReference<Activity> activity;
 
     public UserSettingsView(Activity activity) {
@@ -149,5 +156,20 @@ public class UserSettingsView implements UserSettingsContract.View {
     public void onChangeAvatarClicked() {
         Intent intent = new Intent(activity.get(), AvatarListActivity.class);
         activity.get().startActivity(intent);
+    }
+
+    @Override
+    public ImageView getAvatarImageView() {
+        return avatarImageView;
+    }
+
+    @Override
+    public void onImageFetchingError() {
+        Toast.makeText(activity.get(),R.string.error_fetching_image,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void hideIconProgressBar() {
+        avatarImageProgressbar.setVisibility(View.GONE);
     }
 }

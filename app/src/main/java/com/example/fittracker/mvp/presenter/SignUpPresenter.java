@@ -27,7 +27,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
             view.passwordRepMatchError();
         } else {
             User user = new User(view.getEmail(), view.getPassword(),
-                    view.getName(), view.getSurname());
+                    view.getName(), view.getSurname(), ConstantUtils.DEFAULT_AVATAR_URL);
             if (model.userDoesExist(user)) {
                 view.userAlreadyExists();
             } else {

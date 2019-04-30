@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.DbQuery.DbFetchUserData;
+import com.example.fittracker.DbQuery.DbFetchUserImageUrl;
 import com.example.fittracker.DbQuery.DbUpdateUserData;
 import com.example.fittracker.User;
 import com.example.fittracker.UserDao;
@@ -34,5 +35,10 @@ public class UserSettingsModel implements UserSettingsContract.Model {
     @Override
     public int getLoggedUserId() {
         return preferences.getInt(ConstantUtils.USER_PREFERENCES_ID, ConstantUtils.ZERO);
+    }
+
+    @Override
+    public String getImageUrl(int id) {
+        return new DbFetchUserImageUrl(userDao).executeQuery(id);
     }
 }

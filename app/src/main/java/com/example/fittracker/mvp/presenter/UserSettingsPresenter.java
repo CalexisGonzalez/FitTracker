@@ -4,6 +4,8 @@ import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.UserSettingsContract;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,6 +14,7 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
     private UserSettingsContract.View view;
     private UserSettingsContract.Model model;
     private int userId;
+    private User user;
 
     public UserSettingsPresenter(UserSettingsContract.View view, UserSettingsContract.Model model) {
         this.view = view;
@@ -46,7 +49,8 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
         } else if (!isEmailValid(view.getMail())) {
             view.printInvalidEmail();
         } else {
-            User user = new User(view.getMail(), view.getPassword(), view.getName(), view.getSurname());
+            User user = new User(view.getMail(), view.getPassword(), view.getName(), view.getSurname(),
+                    ConstantUtils.DEFAULT_AVATAR_URL);
             user.setId(userId);
             model.onApplyChanges(user);
             if (view.checkBoxMailPressed()) {
@@ -63,13 +67,13 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
 
     @Override
     public void init() {
-        // get user data from db,print it in the view
-        User user = model.getUserData(userId);
+        user = model.getUserData(userId);
         if (user != null) {
             view.initMail(user.getMail());
             view.initPassword(user.getPassword());
             view.initName(user.getName());
             view.initSurname(user.getSurname());
+            loadIconView();
         } else {
             view.printFetchingError();
         }
@@ -99,5 +103,21 @@ public class UserSettingsPresenter implements UserSettingsContract.Presenter {
     @Override
     public void onChangeAvatarClicked() {
         view.onChangeAvatarClicked();
+    }
+
+    @Override
+    public void loadIconView() {
+        Picasso.get().load(model.getImageUrl(userId)).resize(ConstantUtils.MARVEL_IMAGE_SMALL_DIMENSION,
+                ConstantUtils.MARVEL_IMAGE_SMALL_DIMENSION).into(view.getAvatarImageView(), new Callback() {
+            @Override
+            public void onSuccess() {
+                view.hideIconProgressBar();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                view.onImageFetchingError();
+            }
+        });
     }
 }

@@ -9,7 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "int", "DB_VERSION", "3"
+        buildConfigField "int", "DB_VERSION", "4"
         buildConfigField "String", "WEATHER_BASE_URL", "\"https://api.openweathermap.org\""
         buildConfigField "String", "MAIL_HOST", "\"smtp.gmail.com\""
         buildConfigField "String", "WEATHER_API_KEY", "\"852c6dcc0bd878109bd0fc7bb1566c3e\""

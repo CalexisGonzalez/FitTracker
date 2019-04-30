@@ -39,14 +39,14 @@ public class AvatarListActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         BusProvider.register(presenter);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         BusProvider.unregister(presenter);
     }
 }

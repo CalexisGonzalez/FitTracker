@@ -18,6 +18,7 @@ public class MarvelDialogPresenter implements MarvelDialogContract.Presenter {
 
     @Override
     public void onApplyPressed() {
+        model.updateImageUrl(model.getUserId(), imageUrl);
         view.onApplyPressed();
     }
 
