@@ -3,8 +3,8 @@ package com.example.fittracker.mvp.model;
 import android.location.Location;
 
 import com.example.fittracker.mvp.contract.MainScreenContract;
-import com.example.fittracker.services.WeatherPojo;
-import com.example.fittracker.services.WeatherService;
+import com.example.fittracker.services.weather.WeatherPojo;
+import com.example.fittracker.services.weather.WeatherService;
 
 import retrofit2.Call;
 

@@ -10,8 +10,8 @@ import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
 import com.example.fittracker.mvp.presenter.MainScreenPresenter;
 import com.example.fittracker.mvp.view.MainScreenView;
-import com.example.fittracker.services.WeatherGenerator;
-import com.example.fittracker.services.WeatherService;
+import com.example.fittracker.services.weather.WeatherGenerator;
+import com.example.fittracker.services.weather.WeatherService;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

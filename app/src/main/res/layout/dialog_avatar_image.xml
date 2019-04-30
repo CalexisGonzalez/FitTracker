@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/dialog_avatar_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/dialog_avatar_progressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/avatar_dialog_height"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/dialog_avatar_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/avatar_dialog_height"
+            android:scaleType="fitXY"></ImageView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/dialog_avatar_button_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_apply_changes" />
+
+    <Button
+        android:id="@+id/dialog_avatar_button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_cancel" />
+
+</LinearLayout>
