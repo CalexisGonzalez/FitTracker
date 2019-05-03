@@ -1,5 +1,7 @@
 package com.example.fittracker.mvp.contract;
 
+import android.widget.ImageView;
+
 import com.example.fittracker.GMailSender;
 import com.example.fittracker.User;
 
@@ -10,6 +12,8 @@ public interface UserSettingsContract {
         public User getUserData(int id);
 
         public int getLoggedUserId();
+
+        public String getImageUrl(int id);
     }
 
     interface View {
@@ -52,6 +56,12 @@ public interface UserSettingsContract {
         public boolean checkBoxMailPressed();
 
         public void onChangeAvatarClicked();
+
+        public ImageView getAvatarImageView();
+
+        public void onImageFetchingError();
+
+        public void hideIconProgressBar();
     }
 
     interface Presenter {
@@ -72,5 +82,7 @@ public interface UserSettingsContract {
         public void onSendMailPressed();
 
         public void onChangeAvatarClicked();
+
+        public void loadIconView();
     }
 }

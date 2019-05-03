@@ -1,12 +1,14 @@
 package com.example.fittracker.mvp.view;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fittracker.R;
+import com.example.fittracker.activity.UserSettingsActivity;
 import com.example.fittracker.mvp.contract.MarvelDialogContract;
 
 import java.lang.ref.WeakReference;
@@ -31,7 +33,9 @@ public class MarvelDialogView implements MarvelDialogContract.View {
     @Override
     public void onApplyPressed() {
         Toast.makeText(dialog.get().getContext(), R.string.msg_on_changes_applied, Toast.LENGTH_SHORT).show();
-        dialog.get().dismiss();
+        Intent intent = new Intent(dialog.get().getContext(), UserSettingsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        dialog.get().getContext().startActivity(intent);
     }
 
     @Override

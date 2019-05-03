@@ -14,12 +14,14 @@ public class User {
     private String password;
     private String name;
     private String surname;
+    private String imageUrl;
 
-    public User(String mail, String password, String name, String surname) {
+    public User(String mail, String password, String name, String surname, String imageUrl) {
         this.mail = mail;
         this.password = password;
         this.name = name;
         this.surname = surname;
+        this.imageUrl = imageUrl;
     }
 
     @Ignore
@@ -50,5 +52,9 @@ public class User {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

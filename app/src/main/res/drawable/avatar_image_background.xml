@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" />
+    <stroke android:width="@dimen/imageview_background_padding" android:color="#000000" />
+    <padding android:left="@dimen/imageview_background_padding" android:top="@dimen/imageview_background_padding" android:right="@dimen/imageview_background_padding"
+        android:bottom="@dimen/imageview_background_padding" />
+</shape>

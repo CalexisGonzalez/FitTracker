@@ -29,4 +29,5 @@ public class ConstantUtils {
     public static final int MARVEL_IMAGE_SMALL_DIMENSION = 200;
     public static final int MARVEL_IMAGE_LARGE_DIMENSION = 400;
     public static final String DOT = ".";
+    public static final String DEFAULT_AVATAR_URL = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg";
 }
