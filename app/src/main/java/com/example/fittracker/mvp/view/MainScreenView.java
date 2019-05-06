@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -17,9 +19,13 @@ import android.widget.Toast;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.activity.UserSettingsActivity;
+import com.example.fittracker.adapter.WorkoutAdapter;
 import com.example.fittracker.mvp.contract.MainScreenContract;
+import com.example.fittracker.services.workout.Result;
+import com.example.fittracker.services.workout.WorkoutUnit;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,10 +44,21 @@ public class MainScreenView implements MainScreenContract.View {
     @BindView(R.id.mainscreen_cardview_weather_humidity) TextView humidityView;
     @BindView(R.id.mainscreen_cardview_weather_pressure_tag) TextView pressureTag;
     @BindView(R.id.mainscreen_cardview_weather_pressure) TextView pressureView;
+    @BindView(R.id.mainscreen_activity_recyclerview)
+    RecyclerView recyclerView;
+    @BindView(R.id.mainscreen_activity_recyclerview_progressbar) ProgressBar
+    workoutProgressBar;
 
     public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
         ButterKnife.bind(this, activity);
+        init();
+    }
+
+    public void init(){
+        recyclerView.setAdapter(new WorkoutAdapter(new ArrayList<WorkoutUnit>()));
+        LinearLayoutManager llm = new LinearLayoutManager(this.activity.get());
+        recyclerView.setLayoutManager(llm);
     }
 
     @Override
@@ -150,5 +167,17 @@ public class MainScreenView implements MainScreenContract.View {
     @Override
     public void setPressureView(Double pressure) {
         pressureView.setText(pressure.toString() + ConstantUtils.PASCALS);
+    }
+
+    @Override
+    public void setAdapter(WorkoutAdapter adapter) {
+        workoutProgressBar.setVisibility(View.GONE);
+        recyclerView.setAdapter(adapter);
+        recyclerView.invalidate();
+    }
+
+    @Override
+    public void onImageError() {
+        Toast.makeText(activity.get(), R.string.error_fetching_image, Toast.LENGTH_SHORT).show();
     }
 }

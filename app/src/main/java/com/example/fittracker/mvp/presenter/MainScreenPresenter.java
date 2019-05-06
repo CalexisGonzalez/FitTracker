@@ -7,9 +7,17 @@ import android.support.annotation.NonNull;
 
 import com.example.fittracker.BuildConfig;
 import com.example.fittracker.ConstantUtils;
+import com.example.fittracker.adapter.WorkoutAdapter;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.services.weather.WeatherPojo;
+import com.example.fittracker.services.workout.Result;
+import com.example.fittracker.services.workout.WorkoutPojo;
+import com.example.fittracker.services.workout.WorkoutUnit;
+import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,8 +27,10 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     private MainScreenContract.View view;
     private MainScreenContract.Model model;
     private LocationManager locationManager;
-    private Call<WeatherPojo> call;
+    private Call<WeatherPojo> weatherCall;
+    private Call<WorkoutPojo> workoutCall;
     private WeatherPojo weatherData;
+    private List<WorkoutUnit> workoutUnits;
 
     public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model) {
         this.model = model;
@@ -61,9 +71,9 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     public void init() {
         locationManager = view.getLocationManager();
         checkLocationPermission();
-        call = model.getWeatherDataFromService(model.getLatitud(), model.getLongitude(),
+        weatherCall = model.getWeatherDataFromService(model.getLatitud(), model.getLongitude(),
                 BuildConfig.WEATHER_API_KEY, ConstantUtils.WEATHER_UNITS);
-        call.enqueue(new Callback<WeatherPojo>() {
+        weatherCall.enqueue(new Callback<WeatherPojo>() {
             @Override
             public void onResponse(Call<WeatherPojo> call, Response<WeatherPojo> response) {
                 view.onWeatherDataGet();
@@ -78,6 +88,20 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
             @Override
             public void onFailure(Call<WeatherPojo> call, Throwable t) {
+                view.fetchingError();
+            }
+        });
+        workoutCall = model.getWorkoutDataFromService(ConstantUtils.WORKOUT_API_LIMIT,
+                ConstantUtils.WORKOUT_API_FORMAT);
+        workoutCall.enqueue(new Callback<WorkoutPojo>() {
+            @Override
+            public void onResponse(Call<WorkoutPojo> call, Response<WorkoutPojo> response) {
+                workoutUnits = getWorkoutUnits(response.body().getResults());
+                view.setAdapter(new WorkoutAdapter(workoutUnits));
+            }
+
+            @Override
+            public void onFailure(Call<WorkoutPojo> call, Throwable t) {
                 view.fetchingError();
             }
         });
@@ -118,6 +142,20 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
         } else {
             view.expandWeatherCard();
         }
+    }
+
+    private List<WorkoutUnit> getWorkoutUnits(List<Result> results) {
+        List<WorkoutUnit> units = new ArrayList<>();
+        for (int i = ConstantUtils.ZERO; i < ConstantUtils.WORKOUT_API_LIMIT / ConstantUtils.FOUR; i++) {
+            units.add(new WorkoutUnit(results.subList(i * ConstantUtils.FOUR,
+                    (i + ConstantUtils.ONE) * ConstantUtils.FOUR)));
+        }
+        return units;
+    }
+
+    @Subscribe
+    public void onImageError(Exception e) {
+        view.onImageError();
     }
 }
 
