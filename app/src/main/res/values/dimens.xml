@@ -18,7 +18,7 @@
     <dimen name="mainscreen_settings_horizontal_margin">16dp</dimen>
     <dimen name="mainscreen_settings_vertical_margin">16dp</dimen>
     <dimen name="mainscreen_logout_left_margin">72dp</dimen>
-    <dimen name="mainscreen_logout_bottom_margin">95dp</dimen>
+    <dimen name="mainscreen_logout_bottom_margin">10dp</dimen>
     <dimen name="presentation_logo_marginStart">176dp</dimen>
     <dimen name="presentation_logo_maginTop">308dp</dimen>
     <dimen name="button_stroke_width">2dp</dimen>
@@ -39,4 +39,6 @@
     <dimen name="avatar_recyclerview_progressbar">150dp</dimen>
     <dimen name="avatar_dialog_height">300dp</dimen>
     <dimen name="imageview_background_padding">2dp</dimen>
+    <dimen name="mainscreen_recyclerview_exercises_height">300dp</dimen>
+    <dimen name="exercise_dialog_progressbar">200dp</dimen>
 </resources>

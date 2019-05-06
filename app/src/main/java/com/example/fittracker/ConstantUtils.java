@@ -30,4 +30,13 @@ public class ConstantUtils {
     public static final int MARVEL_IMAGE_LARGE_DIMENSION = 400;
     public static final String DOT = ".";
     public static final String DEFAULT_AVATAR_URL = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg";
+    public static final int WORKOUT_API_LIMIT = 32;
+    public static final String WORKOUT_API_FORMAT = "json";
+    public static final Character SLASH = '/';
+    public static final int WORKOUT_IMAGEDESCRIPTION_OFFSET = 5;
+    public static final Character HYPHEN = '-';
+    public static final Character SPACE = ' ';
+    public static final int FOUR = 4;
+    public static final int EXERCISE_IMAGE_SMALL_DIMENSION = 200;
+    public static final int EXERCISE_IMAGE_LARGE_DIMENSION = 400;
 }

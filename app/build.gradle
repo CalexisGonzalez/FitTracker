@@ -19,6 +19,7 @@ android {
         buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
         buildConfigField "String", "MARVEL_HASH", "\"77284265963542412b3b653d401e6dcd\""
         buildConfigField "int", "MARVEL_TIMESTAMP", "1"
+        buildConfigField "String", "WORKOUT_BASE_URL", "\"https://wger.de\""
 
     }
     buildTypes {

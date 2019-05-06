@@ -5,8 +5,11 @@ import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
+import com.example.fittracker.adapter.WorkoutAdapter;
 import com.example.fittracker.services.weather.WeatherPojo;
 import com.example.fittracker.services.weather.WeatherService;
+import com.example.fittracker.services.workout.WorkoutPojo;
+import com.example.fittracker.services.workout.WorkoutService;
 
 import retrofit2.Call;
 
@@ -36,9 +39,13 @@ public interface MainScreenContract {
 
         double getLongitude();
 
-        WeatherService getService();
+        WeatherService getWeatherService();
+
+        WorkoutService getWorkoutService();
 
         Call<WeatherPojo> getWeatherDataFromService(double lat, double lon, String appid, String units);
+
+        Call<WorkoutPojo> getWorkoutDataFromService(int limit, String format);
     }
 
     interface View {
@@ -77,5 +84,9 @@ public interface MainScreenContract {
         void setHumidityView(Double humidity);
 
         void setPressureView(Double pressure);
+
+        void setAdapter(WorkoutAdapter adapter);
+
+        void onImageError();
     }
 }
