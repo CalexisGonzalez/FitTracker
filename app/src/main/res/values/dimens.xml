@@ -13,8 +13,8 @@
     <dimen name="main_activity_login_bottom">14dp</dimen>
     <dimen name="main_activity_signup_bottom">62dp</dimen>
     <dimen name="signup_activity_horizontal_margin">50dp</dimen>
-    <dimen name="signup_activity_vertical_margin">20dp</dimen>
-    <dimen name="signup_activity_layout_vertical_margin">100dp</dimen>
+    <dimen name="signup_activity_vertical_margin">16dp</dimen>
+    <dimen name="signup_activity_layout_vertical_margin">70dp</dimen>
     <dimen name="mainscreen_settings_horizontal_margin">16dp</dimen>
     <dimen name="mainscreen_settings_vertical_margin">16dp</dimen>
     <dimen name="mainscreen_logout_left_margin">72dp</dimen>
@@ -41,4 +41,6 @@
     <dimen name="imageview_background_padding">2dp</dimen>
     <dimen name="mainscreen_recyclerview_exercises_height">300dp</dimen>
     <dimen name="exercise_dialog_progressbar">200dp</dimen>
+    <dimen name="mainscreen_steps_textsize">35sp</dimen>
+    <dimen name="mainscreen_steps_magintop">20dp</dimen>
 </resources>

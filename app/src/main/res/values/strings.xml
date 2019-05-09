@@ -28,4 +28,9 @@
     <string name="pressure_tag">Pressure:</string>
     <string name="error_fetching_image">An error occured while fetching the image</string>
     <string name="btn_change_avatar">Change Avatar</string>
+    <string name="steps">steps</string>
+    <string name="kilometers">km</string>
+    <string name="calories">cals</string>
+    <string name="btn_reset_steps">Reset Steps</string>
+    <string name="msg_on_steps_reset">The steps has been reseted</string>
 </resources>

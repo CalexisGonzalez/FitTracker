@@ -1,11 +1,15 @@
 package com.example.fittracker.activity;
 
-import android.location.LocationManager;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.fittracker.BusProvider;
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.R;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.mvp.model.MainScreenModel;
@@ -21,7 +25,8 @@ import butterknife.OnClick;
 
 public class MainScreenActivity extends AppCompatActivity {
     private MainScreenContract.Presenter presenter;
-    private LocationManager locationManager;
+    private SensorManager sensorManager;
+    private Sensor stepCountSensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +37,15 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void init() {
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         presenter = new MainScreenPresenter(new MainScreenView(this),
                 new MainScreenModel(WeatherGenerator.createService(WeatherService.class),
-                        WorkoutGenerator.createService(WorkoutService.class)));
+                        WorkoutGenerator.createService(WorkoutService.class),
+                        getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE)));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            stepCountSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            sensorManager.registerListener(presenter, stepCountSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 
     @OnClick(R.id.mainscreen_activity_button_settings)
@@ -62,6 +73,11 @@ public class MainScreenActivity extends AppCompatActivity {
         presenter.onWeatherCardPressed();
     }
 
+    @OnClick(R.id.mainscreen_activity_button_reset_steps)
+    public void onResetStepsPressed() {
+        presenter.onResetStepsPressed();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -72,5 +88,11 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         BusProvider.unregister(presenter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sensorManager.unregisterListener(presenter);
     }
 }

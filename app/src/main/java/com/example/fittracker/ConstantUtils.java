@@ -4,11 +4,12 @@ public class ConstantUtils {
     public static final int ONE = 1;
     public static final String EMPTY = "";
     public static final int ZERO = 0;
+    public static final int NEGATIVE_ONE = -1;
     public static final String DB_USER_TABLE = "user_table";
     public static final String EMAIL_FORMAT = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
     public static final String USER_PREFERENCES_ID = "user_id";
+    public static final String USER_PREFERENCES_STEPS = "user_steps";
     public static final String USER_PREFERENCES = "user_preferences";
-    public static final int NEGATIVE_ONE = 0;
     public static final String RETURN_CONTENT_TYPE = "application/octet-stream";
     public static final String RETURN_GMAIL_NAME = "ByteArrayDataSource";
     public static final String OUTPUT_STREAM_EXCEPTION = "Not supported";
@@ -39,4 +40,7 @@ public class ConstantUtils {
     public static final int FOUR = 4;
     public static final int EXERCISE_IMAGE_SMALL_DIMENSION = 200;
     public static final int EXERCISE_IMAGE_LARGE_DIMENSION = 400;
+    public static final float STEPS_TO_KILOMETERS = 0.0008F;
+    public static final float STEPS_TO_CALORIES = 0.04F;
+    public static final String FLOAT_FORMAT = "%.2f";
 }

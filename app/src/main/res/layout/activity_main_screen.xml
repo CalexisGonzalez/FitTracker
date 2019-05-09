@@ -17,6 +17,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/mainscreen_activity_button_reset_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mainscreen_settings_vertical_margin"
+        android:layout_marginEnd="@dimen/mainscreen_settings_horizontal_margin"
+        android:text="@string/btn_reset_steps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/main_screen_button_log_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,7 +152,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/mainscreen_recyclerview_exercises_height"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/main_screen_button_log_out" />
+        app:layout_constraintBottom_toTopOf="@+id/main_screen_button_log_out"
+        app:layout_constraintTop_toBottomOf="@+id/mainscreen_activity_step_table"/>
 
     <ProgressBar
         android:id="@+id/mainscreen_activity_recyclerview_progressbar"
@@ -151,4 +162,74 @@
         android:layout_height="@dimen/mainscreen_recyclerview_exercises_height"
         app:layout_constraintBottom_toTopOf="@+id/main_screen_button_log_out" />
 
+    <TableLayout
+        android:id="@+id/mainscreen_activity_step_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mainscreen_steps_magintop"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/mainscreen_activity_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/mainscreen_cardview">
+
+        <TableRow>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/mainscreen_step_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mainscreen_steps_textsize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mainscreen_step_count"
+                    android:text="@string/steps" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/mainscreen_step_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/mainscreen_steps_textsize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mainscreen_step_distance"
+                    android:text="@string/kilometers" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/mainscreen_step_calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/mainscreen_steps_textsize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mainscreen_step_calories"
+                    android:text="@string/calories" />
+
+            </RelativeLayout>
+
+        </TableRow>
+
+    </TableLayout>
 </android.support.constraint.ConstraintLayout>

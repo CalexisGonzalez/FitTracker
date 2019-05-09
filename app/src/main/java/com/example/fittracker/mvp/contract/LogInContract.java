@@ -13,6 +13,10 @@ public interface LogInContract {
         boolean isValidLogIn(User user);
 
         int getUserId(User user);
+
+        int getSharedPreferencesInt();
+
+        boolean existSharedPreferences();
     }
 
     interface View {
@@ -25,5 +29,7 @@ public interface LogInContract {
         void onSignUpPressed();
 
         void onValidLogin(int id);
+
+        void onUserLogged();
     }
 }

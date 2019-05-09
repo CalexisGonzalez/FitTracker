@@ -4,10 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,7 +21,6 @@ import com.example.fittracker.R;
 import com.example.fittracker.activity.UserSettingsActivity;
 import com.example.fittracker.adapter.WorkoutAdapter;
 import com.example.fittracker.mvp.contract.MainScreenContract;
-import com.example.fittracker.services.workout.Result;
 import com.example.fittracker.services.workout.WorkoutUnit;
 
 import java.lang.ref.WeakReference;
@@ -47,7 +46,10 @@ public class MainScreenView implements MainScreenContract.View {
     @BindView(R.id.mainscreen_activity_recyclerview)
     RecyclerView recyclerView;
     @BindView(R.id.mainscreen_activity_recyclerview_progressbar) ProgressBar
-    workoutProgressBar;
+            workoutProgressBar;
+    @BindView(R.id.mainscreen_step_count) TextView stepCountView;
+    @BindView(R.id.mainscreen_step_distance) TextView stepDistanceView;
+    @BindView(R.id.mainscreen_step_calories) TextView stepCaloriesView;
 
     public MainScreenView(Activity activity) {
         this.activity = new WeakReference<>(activity);
@@ -55,7 +57,7 @@ public class MainScreenView implements MainScreenContract.View {
         init();
     }
 
-    public void init(){
+    public void init() {
         recyclerView.setAdapter(new WorkoutAdapter(new ArrayList<WorkoutUnit>()));
         LinearLayoutManager llm = new LinearLayoutManager(this.activity.get());
         recyclerView.setLayoutManager(llm);
@@ -77,17 +79,16 @@ public class MainScreenView implements MainScreenContract.View {
 
     @Override
     public void onLogOutPressed() {
-        SharedPreferences.Editor editor = activity.get().
-                getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE).edit();
-        editor.putInt(ConstantUtils.USER_PREFERENCES_ID, ConstantUtils.NEGATIVE_ONE);
-        editor.apply();
         activity.get().finish();
     }
 
     @Override
     public boolean locationPermissionGranted() {
-        return (ActivityCompat.checkSelfPermission(activity.get(),
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
+        boolean isGranted = ((ContextCompat.checkSelfPermission(activity.get(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                && (ContextCompat.checkSelfPermission(activity.get(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED));
+        return isGranted;
     }
 
     @Override
@@ -97,7 +98,8 @@ public class MainScreenView implements MainScreenContract.View {
 
     @Override
     public void requestPermissions() {
-        ActivityCompat.requestPermissions(activity.get(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+        ActivityCompat.requestPermissions(activity.get(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION},
                 ConstantUtils.LOCATION_REQUEST_CODE);
     }
 
@@ -156,7 +158,7 @@ public class MainScreenView implements MainScreenContract.View {
 
     @Override
     public boolean isWeatherCardExpanded() {
-       return humidityView.getVisibility() != View.GONE;
+        return humidityView.getVisibility() != View.GONE;
     }
 
     @Override
@@ -179,5 +181,28 @@ public class MainScreenView implements MainScreenContract.View {
     @Override
     public void onImageError() {
         Toast.makeText(activity.get(), R.string.error_fetching_image, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setStepCountView(int steps) {
+        stepCountView.setText(String.valueOf(steps));
+    }
+
+    @Override
+    public void setStepDistanceView(float distance) {
+        stepDistanceView.setText(String.format(ConstantUtils.FLOAT_FORMAT, distance));
+    }
+
+    @Override
+    public void setStepCaloriesView(float calories) {
+        stepCaloriesView.setText(String.format(ConstantUtils.FLOAT_FORMAT, calories));
+    }
+
+    @Override
+    public void onResetStepsPressed() {
+        Toast.makeText(activity.get(), R.string.msg_on_steps_reset, Toast.LENGTH_SHORT).show();
+        setStepCaloriesView(ConstantUtils.ZERO);
+        setStepCountView(ConstantUtils.ZERO);
+        setStepDistanceView(ConstantUtils.ZERO);
     }
 }

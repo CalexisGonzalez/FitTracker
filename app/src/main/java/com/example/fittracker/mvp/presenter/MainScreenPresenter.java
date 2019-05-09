@@ -2,6 +2,9 @@ package com.example.fittracker.mvp.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
 
@@ -31,11 +34,13 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     private Call<WorkoutPojo> workoutCall;
     private WeatherPojo weatherData;
     private List<WorkoutUnit> workoutUnits;
+    private float steps;
 
     public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model) {
         this.model = model;
         this.view = view;
-        init();
+        initWeather();
+        initExercise();
     }
 
     @Override
@@ -50,6 +55,8 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     @Override
     public void onLogOutPressed() {
+        model.setSharedPreferencesSteps(ConstantUtils.NEGATIVE_ONE);
+        model.setSharedPreferencesUser(ConstantUtils.ZERO);
         view.onLogOutPressed();
     }
 
@@ -65,10 +72,26 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     @SuppressLint("MissingPermission")
     @Override
     public void setLocationObject() {
-        model.setLocationObject(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER));
+        model.setLocationObject(getLastKnownLocation());
     }
 
-    public void init() {
+    private Location getLastKnownLocation() {
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
+    }
+
+    public void initWeather() {
         locationManager = view.getLocationManager();
         checkLocationPermission();
         weatherCall = model.getWeatherDataFromService(model.getLatitud(), model.getLongitude(),
@@ -91,6 +114,9 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 view.fetchingError();
             }
         });
+    }
+
+    public void initExercise() {
         workoutCall = model.getWorkoutDataFromService(ConstantUtils.WORKOUT_API_LIMIT,
                 ConstantUtils.WORKOUT_API_FORMAT);
         workoutCall.enqueue(new Callback<WorkoutPojo>() {
@@ -156,6 +182,28 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     @Subscribe
     public void onImageError(Exception e) {
         view.onImageError();
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        steps = event.values[ConstantUtils.ZERO];
+        if (!model.existsSharedPreferencesSteps() || model.getSharedPreferencesSteps() == ConstantUtils.NEGATIVE_ONE) {
+            model.setSharedPreferencesSteps(steps);
+        }
+        view.setStepCountView((int) steps - model.getSharedPreferencesSteps());
+        view.setStepDistanceView((steps - model.getSharedPreferencesSteps()) * ConstantUtils.STEPS_TO_KILOMETERS);
+        view.setStepCaloriesView((steps - model.getSharedPreferencesSteps()) * ConstantUtils.STEPS_TO_CALORIES);
+    }
+
+    @Override
+    public void onResetStepsPressed() {
+        model.setSharedPreferencesSteps(steps);
+        view.onResetStepsPressed();
     }
 }
 

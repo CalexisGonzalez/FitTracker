@@ -1,5 +1,6 @@
 package com.example.fittracker.mvp.contract;
 
+import android.hardware.SensorEventListener;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -14,7 +15,7 @@ import com.example.fittracker.services.workout.WorkoutService;
 import retrofit2.Call;
 
 public interface MainScreenContract {
-    interface Presenter {
+    interface Presenter extends SensorEventListener {
         void onSettingsPressed();
 
         void onBackPressed();
@@ -30,6 +31,8 @@ public interface MainScreenContract {
         void setWeatherIcon(String url);
 
         void onWeatherCardPressed();
+
+        void onResetStepsPressed();
     }
 
     interface Model {
@@ -46,6 +49,14 @@ public interface MainScreenContract {
         Call<WeatherPojo> getWeatherDataFromService(double lat, double lon, String appid, String units);
 
         Call<WorkoutPojo> getWorkoutDataFromService(int limit, String format);
+
+        int getSharedPreferencesSteps();
+
+        boolean existsSharedPreferencesSteps();
+
+        void setSharedPreferencesSteps(float steps);
+
+        void setSharedPreferencesUser(int id);
     }
 
     interface View {
@@ -88,5 +99,13 @@ public interface MainScreenContract {
         void setAdapter(WorkoutAdapter adapter);
 
         void onImageError();
+
+        void setStepCountView(int steps);
+
+        void setStepDistanceView(float distance);
+
+        void setStepCaloriesView(float calories);
+
+        void onResetStepsPressed();
     }
 }

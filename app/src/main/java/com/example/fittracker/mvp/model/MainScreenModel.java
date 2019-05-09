@@ -1,7 +1,9 @@
 package com.example.fittracker.mvp.model;
 
+import android.content.SharedPreferences;
 import android.location.Location;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.mvp.contract.MainScreenContract;
 import com.example.fittracker.services.weather.WeatherPojo;
 import com.example.fittracker.services.weather.WeatherService;
@@ -14,10 +16,12 @@ public class MainScreenModel implements MainScreenContract.Model {
     private Location location;
     private WeatherService weatherService;
     private WorkoutService workoutService;
+    private SharedPreferences preferences;
 
-    public MainScreenModel(WeatherService weatherService, WorkoutService workoutService) {
+    public MainScreenModel(WeatherService weatherService, WorkoutService workoutService, SharedPreferences preferences) {
         this.weatherService = weatherService;
         this.workoutService = workoutService;
+        this.preferences = preferences;
     }
 
     @Override
@@ -54,5 +58,29 @@ public class MainScreenModel implements MainScreenContract.Model {
     @Override
     public Call<WorkoutPojo> getWorkoutDataFromService(int limit, String format) {
         return getWorkoutService().getData(limit, format);
+    }
+
+    @Override
+    public int getSharedPreferencesSteps() {
+        return preferences.getInt(ConstantUtils.USER_PREFERENCES_STEPS, ConstantUtils.ZERO);
+    }
+
+    @Override
+    public boolean existsSharedPreferencesSteps() {
+        return preferences.contains(ConstantUtils.USER_PREFERENCES_STEPS);
+    }
+
+    @Override
+    public void setSharedPreferencesSteps(float steps) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(ConstantUtils.USER_PREFERENCES_STEPS, (int) steps);
+        editor.apply();
+    }
+
+    @Override
+    public void setSharedPreferencesUser(int id) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(ConstantUtils.USER_PREFERENCES_ID, id);
+        editor.apply();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.fittracker.mvp.presenter;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.User;
 import com.example.fittracker.mvp.contract.LogInContract;
 
@@ -10,6 +11,11 @@ public class MainActivityPresenter implements LogInContract.Presenter {
     public MainActivityPresenter(LogInContract.View view, LogInContract.Model model) {
         mView = view;
         mModel = model;
+        if (model.existSharedPreferences()) {
+            if (model.getSharedPreferencesInt() != ConstantUtils.ZERO) {
+                view.onUserLogged();
+            }
+        }
     }
 
     @Override

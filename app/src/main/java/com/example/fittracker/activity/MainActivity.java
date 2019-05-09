@@ -3,6 +3,7 @@ package com.example.fittracker.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.MainActivityView;
 import com.example.fittracker.R;
 import com.example.fittracker.UserRoomDatabase;
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void init() {
         LogInContract.View view = new MainActivityView(this);
-        LogInContract.Model model = new MainActivityModel(UserRoomDatabase.getDatabase(this));
+        LogInContract.Model model = new MainActivityModel(UserRoomDatabase.getDatabase(this),
+                getSharedPreferences(ConstantUtils.USER_PREFERENCES, MODE_PRIVATE));
         presenter = new MainActivityPresenter(view, model);
     }
 

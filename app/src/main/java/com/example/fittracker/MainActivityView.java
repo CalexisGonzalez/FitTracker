@@ -55,8 +55,12 @@ public class MainActivityView implements LogInContract.View {
                 getSharedPreferences(ConstantUtils.USER_PREFERENCES, Context.MODE_PRIVATE).edit();
         editor.putInt(ConstantUtils.USER_PREFERENCES_ID, id);
         editor.apply();
+        onUserLogged();
+    }
+
+    @Override
+    public void onUserLogged() {
         Intent intent = new Intent(activity.get(), MainScreenActivity.class);
         activity.get().startActivity(intent);
     }
-
 }
