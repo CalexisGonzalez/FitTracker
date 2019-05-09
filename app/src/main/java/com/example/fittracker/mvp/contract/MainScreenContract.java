@@ -1,6 +1,7 @@
 package com.example.fittracker.mvp.contract;
 
 import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -33,6 +34,10 @@ public interface MainScreenContract {
         void onWeatherCardPressed();
 
         void onResetStepsPressed();
+
+        void onPause();
+
+        void onResume();
     }
 
     interface Model {

@@ -84,11 +84,10 @@ public class MainScreenView implements MainScreenContract.View {
 
     @Override
     public boolean locationPermissionGranted() {
-        boolean isGranted = ((ContextCompat.checkSelfPermission(activity.get(),
+        return ((ContextCompat.checkSelfPermission(activity.get(),
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 && (ContextCompat.checkSelfPermission(activity.get(),
                 Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED));
-        return isGranted;
     }
 
     @Override

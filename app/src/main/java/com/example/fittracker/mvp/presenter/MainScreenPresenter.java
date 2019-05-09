@@ -4,11 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 
 import com.example.fittracker.BuildConfig;
+import com.example.fittracker.BusProvider;
 import com.example.fittracker.ConstantUtils;
 import com.example.fittracker.adapter.WorkoutAdapter;
 import com.example.fittracker.mvp.contract.MainScreenContract;
@@ -35,10 +38,16 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     private WeatherPojo weatherData;
     private List<WorkoutUnit> workoutUnits;
     private float steps;
+    private Sensor stepCountSensor;
+    private SensorManager manager;
 
-    public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model) {
+    public MainScreenPresenter(MainScreenContract.View view, MainScreenContract.Model model, SensorManager manager) {
         this.model = model;
         this.view = view;
+        this.manager = manager;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            stepCountSensor = manager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        }
         initWeather();
         initExercise();
     }
@@ -84,7 +93,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 continue;
             }
             if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
                 bestLocation = l;
             }
         }
@@ -204,6 +212,22 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     public void onResetStepsPressed() {
         model.setSharedPreferencesSteps(steps);
         view.onResetStepsPressed();
+    }
+
+    @Override
+    public void onPause() {
+        BusProvider.unregister(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            manager.unregisterListener(this);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        BusProvider.register(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            manager.registerListener(this, stepCountSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 }
 
